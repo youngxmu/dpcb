@@ -2,6 +2,7 @@ var moka = {
 	spot : {},
 	info : {},
 	fav : {},
+	hotel : {},
 	order : {}
 };
 
