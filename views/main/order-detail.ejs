@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<%- include ../common/meta.ejs %>
+	<title>景点介绍</title>
+	<link rel="stylesheet" type="text/css" href="css/order.css">
+</head>
+<body>
+	<div id="wrapper" class="container">
+		<div class="order-detail">
+			<div class="prod-info">
+				<span class="pic">
+					<img src="<%= spic %>">
+				</span>
+				<div class="name"><%= name %></div>
+				<div class="count">X<%= count %></div>
+				<div class="price">总价：￥<%= amount %></div>
+				<span class="single-price">￥<%= amount %></span>
+			</div>
+			<div class="order-info">
+				<label>订单信息</label>
+				<dl><span>订单号：</span><%= order_no %></dl>
+				<dl><span>订单时间：</span><%= create_time %></dl>
+				<dl><span>使用时间：</span><%= use_time %></dl>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src='js/order-list.js'></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			// moka.order.list.init();
+		});
+	</script>
+</body>
+</html>

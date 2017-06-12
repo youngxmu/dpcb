@@ -1,0 +1,106 @@
+.top-bar{
+	background-color: #01CFDC;
+	line-height: 0.8rem;
+	color: #ffffff;
+	font-size: 0.32rem;
+	text-align: center;
+}
+
+.login-container{
+	padding: 0.2rem 0.4rem;
+}
+
+.input-line{
+	height: 1rem;
+	border-bottom: 0.01rem solid #cccccc;
+	padding-left: 1rem;
+	width: 100%;
+	position: relative;
+}
+.input-line .ico{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 1rem;
+	height: 1rem;
+	display: inline-block;
+	background-repeat: no-repeat;
+}
+.input-line .ico-user{
+	background-image: url(../img/login/user.png);
+	background-position: center center;
+	background-size: 0.32rem 0.36rem;
+}
+
+.input-line .ico-msg{
+	background-image: url(../img/login/msg.png);
+	background-position: center center;
+	background-size: 0.4rem 0.35rem;
+}
+
+.input-line .ico-lock{
+	background-image: url(../img/login/lock.png);
+	background-position: center center;
+	background-size: 0.33rem 0.4rem;
+}
+
+.input-line .ico-phone{
+	background-image: url(../img/login/phone.png);
+	background-position: center center;
+	background-size: 0.28rem 0.4rem;
+}
+
+.input-line input{
+	width: 100%;
+	height: 100%;
+	border: 0;
+	font-size: 0.28rem;
+	vertical-align: top;
+	background-color: transparent;
+}
+
+.btn-login{
+	margin-top: 0.5rem;
+	background-color: #01CFDC;
+	line-height: 0.8rem;
+	color: #ffffff;
+	font-size: 0.32rem;
+	text-align: center;
+	border-radius: 0.1rem;
+}
+
+.oper-other{
+	line-height: 1rem;
+	width: 100%;
+	
+	font-size: 0.28rem;
+}
+
+.oper-other .btn-register{
+	color: #01CFDC;
+	float: left;
+	line-height: 1rem;
+}
+
+.oper-other .btn-forget{
+	color: #01CFDC;
+	float: right;
+	line-height: 1rem;
+}
+
+.code-line{
+	padding-right: 1.6rem;
+}
+
+.code-line .btn-code{
+	line-height: 0.6rem;
+	position: absolute;
+	right: 0;
+	top: 0.2rem;
+	width: 1.4rem;
+	font-size:0.24rem;
+	color: #ffffff;
+	background-color: #01CFDC;
+	border-radius: 0.06rem;
+	text-align: center;
+}

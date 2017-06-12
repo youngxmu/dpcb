@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<%- include ../common/meta.ejs %>
+	<title>景点列表</title>
+	<link rel="stylesheet" type="text/css" href="css/order.css">
+</head>
+<body>
+	<div id="wrapper" class="container">
+		<ul class="nav-panel">
+			<li class="active" data-status="0"><span>待使用</span></li>
+			<li data-status="1"><span>已使用</span></li>
+		</ul>
+		<ul id="order_list" class="order-list"></ul>
+	</div>
+	<script type="text/juicer" id="order_list_tpl">
+		{@each list as obj, index}
+		<li data-id="${obj.id}">
+			<span class="pic">
+				<img src="${obj.spic}">
+			</span>
+			<div class="name">${obj.name}</div>
+			<div class="price">总价：${obj.amount}</div>
+			<div class="date-time">${obj.create_time}</div>
+			<span class="more">查看</span>
+		</li>
+		{@/each}
+	</script>
+	<script type="text/javascript" src='js/order-list.js'></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			moka.order.list.init();
+		});
+	</script>
+</body>
+</html>
