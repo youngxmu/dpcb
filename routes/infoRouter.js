@@ -39,7 +39,7 @@ var dataMap = {
 };
 
 
-router.get('/infolist', function(req, res, next) {
+router.get('/list', function(req, res, next) {
     return res.render('main/info-list');
 });
 
@@ -55,13 +55,13 @@ router.post('/infolist', function(req, res, next) {
     });
 });
 
-router.get('/infodetail/:id', function(req, res, next) {
+router.get('/detail/:id', function(req, res, next) {
 	var id = req.params.id;
 	return res.render('main/info-detail', {id:id});
 });
 
 
-router.post('/infodetail', function(req, res, next) {
+router.post('/detail', function(req, res, next) {
 	var id = req.body.id;
 	var info = dataMap[id];
 	return res.json({

@@ -2,23 +2,29 @@
 <html>
 <head>
 	<%- include ../common/meta.ejs %>
-	<title>景点介绍</title>
-	<link rel="stylesheet" type="text/css" href="css/spot.css">
+	<title>详情</title>
+	<link rel="stylesheet" type="text/css" href="css/hotel.css">
 </head>
 <body>
+	<input id="hotel_id" type="hidden" value="<%= id %>" >
 	<div id="wrapper" class="container">
-		<div class="spot-detail">
-			<div class="pic"><img src="<%= pic %>"></div>
-			<div class="text">
-				<div class="name"><%= name %></div>
-				<div class="desc"><%= description %></div>
+		<div id="hotel_detail" class="hotel-detail"></div>
+	</div>
+	<script type="text/juicer" id="hotel_tpl">
+		<div class="pic">
+			<img src="${pics|getImgHost}${pics}">
+			<div class="msg">
+				<span class="title">${title}</span>
+				<span class="memo">${memo}</span>
 			</div>
 		</div>
-	</div>
-	<script type="text/javascript" src='js/spot-list.js'></script>
+		<div class="address">${address}<span class="more"></span></div>
+		<div class="content">${content}</div>
+	</script>
+	<script type="text/javascript" src='js/hotel-detail.js'></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			// moka.spot.list.init();
+			moka.hotel.detail.init();
 		});
 	</script>
 </body>

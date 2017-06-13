@@ -6,19 +6,21 @@
 	<link rel="stylesheet" type="text/css" href="css/spot.css">
 </head>
 <body>
+	<input id="spot_id" type="hidden" value="<%= id %>" >
 	<div id="wrapper" class="container">
-		<div class="spot-detail">
-			<div class="pic"><img src="<%= pic %>"></div>
-			<div class="text">
-				<div class="name"><%= name %></div>
-				<div class="desc"><%= description %></div>
-			</div>
-		</div>
+		<div id="spot_detail" class="spot-detail"></div>
 	</div>
-	<script type="text/javascript" src='js/spot-list.js'></script>
+	<script type="text/juicer" id="spot_tpl">
+		<div class="pic"><img src="${pics|getImgHost}${pics}"></div>
+		<div class="text">
+			<div class="name">${title}</div>
+			<div class="desc">${content}</div>
+		</div>
+	</script>
+	<script type="text/javascript" src='js/spot-detail.js'></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			// moka.spot.list.init();
+			moka.spot.detail.init();
 		});
 	</script>
 </body>

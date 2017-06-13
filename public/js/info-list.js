@@ -25,7 +25,7 @@
 
       $('#wrapper').on('tap', '.info-list li', function(){
         var id = $(this).attr('data-id');
-        window.location.href = 'r/infodetail/' + id;
+        window.location.href = 'info/detail/' + id;
       });
 		},
     loadData : function(){

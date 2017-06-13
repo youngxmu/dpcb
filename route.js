@@ -5,12 +5,12 @@ var spotRouter = require('./routes/spotRouter.js');
 var orderRouter = require('./routes/orderRouter.js');
 var hotelRouter = require('./routes/hotelRouter.js');
 var infoRouter = require('./routes/infoRouter.js');
-
-
+var sRouter = require('./routes/sRouter.js');
 
 module.exports = function (app) {
 	app.use('', indexRouter);
-	app.use('/r', infoRouter);
+	app.use('/s', sRouter);
+	app.use('/info', infoRouter);
     app.use('/spot', spotRouter);
     app.use('/order', orderRouter);
     app.use('/hotel', hotelRouter);

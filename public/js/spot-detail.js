@@ -1,10 +1,10 @@
 (function(P){
 	var _this = null;
-	_this = P.info.detail = {
+	_this = P.spot.detail = {
     tpl : {},
 		init : function(){
-      _this.infoId = $('#info_id').val();
-			_this.tpl.infoTpl = juicer($('#info_tpl').html());
+      _this.spotId = $('#spot_id').val();
+			_this.tpl.spotTpl = juicer($('#spot_tpl').html());
 			_this.initEvent();
       _this.loadData();
 		},
@@ -15,14 +15,15 @@
 		},
     loadData : function(){
       $.ajax({
-        url : ctx + 'r/infodetail',
+        url : ctx + 'r/scedetail',
         type : 'post',
-        data : {iid:_this.infoId},
+        data : {sid:_this.spotId},
         dataType : 'json',
         success : function(result){
-          if(result.ret_code){
-            var html = _this.tpl.infoTpl.render(result.value);
-            $('#info_detail').html(html);
+          if(result.ret_code == 0){
+
+            var html = _this.tpl.spotTpl.render(result.value);
+            $('#spot_detail').html(html);
           }
         },
         error : function(){

@@ -18,12 +18,22 @@
 		},
     loadData : function(){
       $.ajax({
-        url : 'spot/list',
+        url : ctx + 'r/scelist',//'spot/list',
         type : 'post',
+        dataType : 'json',
         success : function(result){
           if(result.success){
             var html = _this.tpl.spotListTpl.render(result);
             $('#spot_list').html(html);
+          }
+          if(result.ret_code == 0){
+            var list = [];
+            for(var index in result.value){
+              var spot = result.value[index];
+              list.push(spot);
+            }
+            var html = _this.tpl.spotListTpl.render({list: list});
+            $('#spot_list').html(html); 
           }
         },
         error : function(){

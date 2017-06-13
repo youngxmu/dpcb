@@ -25,7 +25,7 @@
 
       $('#wrapper').on('tap', '.hotel-list li', function(){
         var id = $(this).attr('data-id');
-        window.location.href = 'r/hoteldetail/' + id;
+        window.location.href = 'hotel/detail/' + id;
       });
 		},
     loadData : function(){
