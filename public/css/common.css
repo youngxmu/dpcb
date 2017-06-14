@@ -119,3 +119,8 @@ input{outline:none}
     box-sizing: border-box;
     border-radius: 0.2rem;
 }
+
+.red-hlight{
+    font-style: normal;
+    color: red;
+}

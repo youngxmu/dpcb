@@ -40,7 +40,7 @@ router.post('/list', function(req, res, next) {
 
 router.get('/detail/:id', function(req, res, next) {
 	var id = req.params.id;
-    return res.render('main/spot-detail', {id,id});
+    return res.render('main/spot-detail', {id:id});
 });
 
 module.exports = router;

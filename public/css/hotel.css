@@ -187,6 +187,7 @@
 
 .hotel-detail .content{
 	font-size: 0.28rem;
-    white-space: pre;
+    white-space: pre-line;
     padding: 0.2rem;
+    
 }
