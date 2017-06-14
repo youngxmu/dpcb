@@ -6,14 +6,20 @@
 	<link rel="stylesheet" type="text/css" href="css/spot.css">
 </head>
 <body>
+	<input id="cid" type="hidden" value="<%= cid %>">
 	<input id="spot_id" type="hidden" value="<%= id %>" >
 	<div id="wrapper" class="container">
 		<div id="spot_detail" class="spot-detail"></div>
 	</div>
+	<!-- <img src="${pics|getImgHost}${pics}"> -->
 	<script type="text/juicer" id="spot_tpl">
-		<div class="pic"><img src="${pics|getImgHost}${pics}"></div>
+		<div class="pic">$${pics|getPics}</div>
 		<div class="text">
-			<div class="name">${title}</div>
+			<div class="name">
+				<span>${title}</span>
+				<span class="btn-fav"></span>
+				<span class="btn-share"></span>
+			</div>
 			<div class="desc">${content}</div>
 		</div>
 	</script>

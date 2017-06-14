@@ -68,10 +68,38 @@
 	width: 100%;
 }
 
-.spot-detail .pic{width: 100%;font-size: 0;}
+.spot-detail .pic{width: 100%;font-size: 0;
+	/*min-height:1rem;*/
+}
 .spot-detail .pic img{width: 100%;height: auto;}
 .spot-detail .text{
 	color: #666666;
 }
-.spot-detail .text .name{width: 100%;text-align: center;line-height: 0.8rem;border-bottom: 0.01rem solid #cccccc;font-size: 0.32rem;font-weight: 600;}
+.spot-detail .text .name{width: 100%;text-align: center;line-height: 0.8rem;border-bottom: 0.01rem solid #cccccc;font-size: 0.32rem;font-weight: 600;
+	position: relative;
+}
 .spot-detail .text .desc{width: 100%;padding: 0.2rem;text-align: justify;line-height: 2;font-size: 0.28rem;}
+
+.spot-detail .text .name .btn-fav{
+	width: 0.4rem;
+	height: 0.4rem;
+	background-image: url('../img/fav.png');
+	background-position: center center;
+	background-size: 0.33rem 0.32rem;
+	background-repeat: no-repeat;
+	position: absolute;
+	right: 0.9rem;
+	top: 0.2rem;
+}
+
+.spot-detail .text .name .btn-share{
+	width: 0.4rem;
+	height: 0.4rem;
+	background-image: url('../img/share.png');
+	background-position: center center;
+	background-size: 0.34rem 0.34rem;
+	background-repeat: no-repeat;
+	position: absolute;
+	right: 0.2rem;
+	top: 0.2rem;
+}

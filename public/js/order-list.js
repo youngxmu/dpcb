@@ -32,8 +32,7 @@
         url : ctx + 'r/myorder',
         type : 'post',
         data : {
-          cid :
-          status : _this.status
+          cid : _this.cid
         },
         success : function(result){
           if(result.success){

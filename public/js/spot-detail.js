@@ -12,6 +12,9 @@
       $('#wrapper').on('touchstart', function(e){
         e.preventDefault();
       });
+
+      $('#wrapper').on('tap', '.btn-fav', _this.fav);
+      $('#wrapper').on('tap', '.btn-share', _this.share);
 		},
     loadData : function(){
       $.ajax({
@@ -21,9 +24,52 @@
         dataType : 'json',
         success : function(result){
           if(result.ret_code == 0){
-
             var html = _this.tpl.spotTpl.render(result.value);
             $('#spot_detail').html(html);
+          }
+        },
+        error : function(){
+        }
+      });
+    },
+    fav : function(event){
+      event.preventDefault();
+      event.stopPropagation();
+      var id = _this.spotId;
+      $.ajax({
+        url : ctx + 'r/fav',
+        type : 'post',
+        dataType : 'json',
+        data : {
+          cid : _this.cid,
+          id : id,
+          kind : 1
+        },
+        success : function(result){
+          if(result.ret_code == 0){
+            util.showMsg('收藏成功');
+          }
+        },
+        error : function(){
+        }
+      });
+    },
+    share : function(event){
+      event.preventDefault();
+      event.stopPropagation();
+      var id = _this.spotId;
+      $.ajax({
+        url : ctx + 'r/share',
+        type : 'post',
+        dataType : 'json',
+        data : {
+          cid : _this.cid,
+          id : id,
+          kind : 1
+        },
+        success : function(result){
+          if(result.ret_code == 0){
+            util.showMsg('分享成功');
           }
         },
         error : function(){

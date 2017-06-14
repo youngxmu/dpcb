@@ -1,6 +1,7 @@
 (function(P){
 	var _this = null;
 	_this = P.fav.list = {
+    favMap : {},
     tpl : {},
 		init : function(){
       _this.cid = $('#cid').val();
@@ -14,7 +15,20 @@
       });
       $('#wrapper').on('tap', '.fav-list li', function(){
         var id = $(this).attr('data-id');
-        // window.location.href = 'r/favdetail/' + id;
+        var fav = _this.favMap[id];
+
+        var iid = fav.iid;
+        var kind = fav.kid;
+        if(kind == 1){
+
+        }
+        if(kind == 2){
+          
+        }
+        if(kind == 3){
+          window.location.href = 'info/detail/' + iid;  
+        }
+        
       });
 		},
     loadData : function(){
@@ -37,6 +51,8 @@
               var fav = result.value[index];
               if(fav.kind == _this.kind){
                 list.push(fav);
+
+                _this.favMap[fav.id] = fav;
               }
             }
             var html = _this.tpl.favListTpl.render({list: list});

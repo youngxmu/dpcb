@@ -28,8 +28,8 @@
         var id = $(this).attr('data-id');
         window.location.href = 'info/detail/' + id;
       });
-      $('#wrapper').on('tap', '.info-list li .btn-fav', _this.fav);
-      $('#wrapper').on('tap', '.info-list li .btn-share', _this.share);
+      $('#wrapper').on('tap', '.btn-fav', _this.fav);
+      $('#wrapper').on('tap', '.btn-share', _this.share);
 		},
     loadData : function(){
       $.ajax({

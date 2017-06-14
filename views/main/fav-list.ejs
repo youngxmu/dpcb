@@ -12,13 +12,11 @@
 	</div>
 	<script type="text/juicer" id="fav_list_tpl">
 		{@each list as obj, index}
-		<li data-id="${obj.iid}">
-			<span class="pic">
-				<img src="${obj.pics}">
-			</span>
+		<li data-id="${obj.id}">
+			<span class="pic">${pics|getPic}</span>
 			<div class="title">${obj.title}</div>
-			<div class="loc">总价：${obj.kind}</div>
-			<div class="date-time">${obj.start}</div>
+			<div class="loc">${obj.source}</div>
+			<div class="date-time">${obj.ftime|getDate}</div>
 		</li>
 		{@/each}
 	</script>

@@ -24,7 +24,8 @@ var dataMap = {
 
 
 router.get('/list', function(req, res, next) {
-    return res.render('main/spot-list');
+	var user = req.session.user;
+    return res.render('main/spot-list', user);
 });
 
 router.post('/list', function(req, res, next) {
@@ -39,8 +40,9 @@ router.post('/list', function(req, res, next) {
 });
 
 router.get('/detail/:id', function(req, res, next) {
+	var user = req.session.user;
 	var id = req.params.id;
-    return res.render('main/spot-detail', {id:id});
+    return res.render('main/spot-detail', {id:id,cid:user.cid});
 });
 
 module.exports = router;

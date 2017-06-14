@@ -15,6 +15,39 @@ var util = {
 	getImgHost : function(){
 		return 'http://123.206.194.194:8080/dpcb';
 	},
+	getPic : function(picsStr){
+		var html = '';
+		if(!picsStr){
+			return html;
+		}
+
+		var pics = picsStr.split(',');
+		for(var index in pics){
+			var pic = pics[index];
+			if(pic && pic != ''){
+				html = '<img src="http://123.206.194.194:8080/dpcb' + pic + '">';
+				break;
+			}
+			
+		}
+		return html;
+	},
+	getPics : function(picsStr){
+		var html = '';
+		if(!picsStr){
+			return html;
+		}
+
+		var pics = picsStr.split(',');
+		for(var index in pics){
+			var pic = pics[index];
+			if(pic && pic != ''){
+				html += '<img src="http://123.206.194.194:8080/dpcb' + pic + '">';	
+			}
+			
+		}
+		return html;
+	},
 	formatIndex : function(index){
 		return parseInt(index, 10) + 1;
 	},
@@ -62,6 +95,12 @@ var util = {
 	},
 
 	date : {
+		getDate : function(dateStr){
+			if(!dateStr){
+				return '';
+			}
+			return dateStr.split(' ')[0];
+		},
 		format : function(longTime){
 			var date = new Date(longTime);
 
@@ -144,6 +183,9 @@ var util = {
 
 juicer.register('getCtx', util.getCtx);
 juicer.register('getImgHost', util.getImgHost);
+juicer.register('getPic', util.getPic);
+juicer.register('getPics', util.getPics);
+juicer.register('getDate', util.date.getDate);
 juicer.register('dateFormat', util.date.format);
 juicer.register('formatIndex', util.formatIndex);
 
