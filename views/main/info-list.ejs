@@ -6,6 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="css/info.css">
 </head>
 <body>
+	<input id="cid" type="hidden" value="<%= cid %>" >
 	<div id="wrapper" class="container">
 		<ul class="nav-panel">
 			<li class="active" data-kind="1"><span>景区活动</span></li>
@@ -27,8 +28,8 @@
 			</div>
 			<div class="other">
 				<span class="pageview">浏览${obj.pageview}次</span>
-				<span class="btn-fav"></span>
-				<span class="btn-share"></span>
+				<span class="btn-fav" data-id="${obj.iid}" data-kind="${obj.kind}"></span>
+				<span class="btn-share" data-id="${obj.iid}" data-kind="${obj.kind}"></span>
 			</div>
 		</li>
 		{@/each}

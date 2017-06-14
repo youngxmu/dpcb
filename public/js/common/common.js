@@ -2,7 +2,9 @@ var moka = {
 	spot : {},
 	info : {},
 	fav : {},
+	share : {},
 	hotel : {},
+	user : {},
 	order : {}
 };
 
@@ -16,14 +18,16 @@ var util = {
 	formatIndex : function(index){
 		return parseInt(index, 10) + 1;
 	},
-	loadingPanel : '<div id="loading_panel" style="position:fixed:top:0;left:0;">'
-			+ '<span style="position:absolute;left:50%;top:35%;margin-left:-70px;"><img src="/svg/loading.svg" style="float:left;margin-right:15px;"></span>'
-			+ '</div>',
-	showLoading : function(){
+	loadingPanel : '<div id="loading_panel" class="weui_loading_toast" style="display:none;"><div class="weui_mask_transparent"></div><div class="weui_toast"><div class="weui_loading"><div class="weui_loading_leaf weui_loading_leaf_0"></div><div class="weui_loading_leaf weui_loading_leaf_1"></div><div class="weui_loading_leaf weui_loading_leaf_2"></div><div class="weui_loading_leaf weui_loading_leaf_3"></div><div class="weui_loading_leaf weui_loading_leaf_4"></div><div class="weui_loading_leaf weui_loading_leaf_5"></div><div class="weui_loading_leaf weui_loading_leaf_6"></div><div class="weui_loading_leaf weui_loading_leaf_7"></div><div class="weui_loading_leaf weui_loading_leaf_8"></div><div class="weui_loading_leaf weui_loading_leaf_9"></div><div class="weui_loading_leaf weui_loading_leaf_10"></div><div class="weui_loading_leaf weui_loading_leaf_11"></div></div><p class="weui_toast_content">数据加载中</p></div></div>',
+	msgTpl : '<div id="msg_dlg" class="js_dialog" style="display:none;"><div class="weui-mask"></div><div class="weui-dialog"><div class="weui-dialog__bd"></div><div class="weui-dialog__ft"><a href="javascript:util.closeMsg();" class="btn-ok weui-dialog__btn weui-dialog__btn_primary">好的</a></div></div></div>',
+	showLoading : function(msg){
 		var $loadingPanel = $('#loading_panel');
 		if($loadingPanel.length == 0){
 			$('body').append(util.loadingPanel);
 			$loadingPanel = $('#loading_panel');
+		}
+		if(msg){
+			$loadingPanel.find('.weui_toast_content').text(msg);
 		}
 		$loadingPanel.show();
 	},
@@ -34,7 +38,29 @@ var util = {
 			$loadingPanel = $('#loading_panel');
 		}
 		$loadingPanel.hide();
+		$loadingPanel.find('.weui_toast_content').text('数据加载中');
 	},
+	showMsg : function(msg){
+		var $msgDlg = $('#msg_dlg');
+		if($msgDlg.length == 0){
+			$('body').append(util.msgTpl);
+			$msgDlg = $('#msg_dlg');
+		}
+		if(msg){
+			$msgDlg.find('.weui-dialog__bd').text(msg);
+		}
+		$msgDlg.show();
+	},
+	closeMsg : function(){
+		var $msgDlg = $('#msg_dlg');
+		if($msgDlg.length == 0){
+			$('body').append(util.loadingPanel);
+			$msgDlg = $('#msg_dlg');
+		}
+		$msgDlg.hide();
+		$msgDlg.find('.weui-dialog__bd').text('');
+	},
+
 	date : {
 		format : function(longTime){
 			var date = new Date(longTime);
@@ -60,7 +86,7 @@ var util = {
 			} 
 			if (Second < 10 ) { 
 				Second = "0" + Second; 
-			}  
+			}	
 
 			var CurrentDate = Year + '-' + Month + '-' + Day + ' ' + Hour + ':' + Minute + ':' + Second;
 
@@ -70,25 +96,25 @@ var util = {
 	dialog : {
 		infoDialog : function(msg, callback){
 			var dd = dialog({
-			    title: '信息',
-			    content: msg,
-			    width : 240,
-			    okValue : '确定',
-			    ok : function(){
-			    	if(callback){
-			    		callback();
-			    	}
-			    }
+				title: '信息',
+				content: msg,
+				width : 240,
+				okValue : '确定',
+				ok : function(){
+					if(callback){
+						callback();
+					}
+				}
 			});
 			dd.showModal();
 		},
 		errorDialog : function(msg){
 			var d = dialog({
-			    title: '错误信息',
-			    content: msg,
-			    width : 240,
-			    okValue : '确定',
-			    ok : function(){}
+				title: '错误信息',
+				content: msg,
+				width : 240,
+				okValue : '确定',
+				ok : function(){}
 			});
 			d.showModal();	
 		},
@@ -103,13 +129,13 @@ var util = {
 			}
 
 			var d = dialog({
-			    title: title,
-			    content: content,
-			    width : 240,
-			    okValue : '确认',
-     	        ok : successCallback,
-     	        cancelValue : '取消',
-     	        cancel : cancelCallback
+				title: title,
+				content: content,
+				width : 240,
+				okValue : '确认',
+	 			ok : successCallback,
+	 			cancelValue : '取消',
+	 			cancel : cancelCallback
 			});
 			d.showModal();	
 		}
@@ -120,3 +146,4 @@ juicer.register('getCtx', util.getCtx);
 juicer.register('getImgHost', util.getImgHost);
 juicer.register('dateFormat', util.date.format);
 juicer.register('formatIndex', util.formatIndex);
+

@@ -1,0 +1,81 @@
+.complain-container{
+}
+
+.text{
+	background-color: #ffffff;
+	width: 100%;
+	height: 4rem;
+	margin-bottom: 0.2rem;
+	border: 0;
+	padding: 0.2rem;
+	line-height: 1.5;
+	font-size: 0.28rem;
+}
+
+.input-line{
+	height: 1rem;
+	border-bottom: 0.01rem solid #cccccc;
+	padding: 0 0.2rem 0 1.4rem;
+	width: 100%;
+	position: relative;
+	background-color: #ffffff;
+}
+.input-line .ico{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 1rem;
+	height: 1rem;
+	display: inline-block;
+	background-repeat: no-repeat;
+}
+
+.input-line label{
+	font-size: 0.28rem;
+	display: inline-block;
+	position: absolute;
+	left: 0.2rem;
+	top: 0;
+	text-align: left;
+	width: 1rem;
+	line-height: 1rem;
+	height: 1rem;
+}
+
+.input-line input{
+	width: 100%;
+	height: 100%;
+	border: 0;
+	font-size: 0.28rem;
+	vertical-align: top;
+	background-color: transparent;
+}
+
+.btn-complain{
+	background-color: #01CFDC;
+	line-height: 0.8rem;
+	color: #ffffff;
+	font-size: 0.32rem;
+	text-align: center;
+	border-radius: 0.1rem;
+	width: 90%;
+	margin: auto;
+	margin-top: 0.5rem;
+}
+
+.code-line{
+	padding-right: 1.8rem;
+}
+
+.code-line .btn-code{
+	line-height: 0.6rem;
+	position: absolute;
+	right: 0.2rem;
+	top: 0.2rem;
+	width: 1.4rem;
+	font-size:0.24rem;
+	color: #ffffff;
+	background-color: #01CFDC;
+	border-radius: 0.06rem;
+	text-align: center;
+}

@@ -33,7 +33,7 @@ app.use(expressSession({
 //app.use(csrf());
 app.use(express.static(config.staticPath));
 
-if(config.env!='dev'){//开发环境不需要过滤
+if(config.env!='devv'){//开发环境不需要过滤
     var whitelist = config.whitelist;
     app.use(function(req, res, next) {//判断是否登录的中间件
         var requestPath = req.path;//请求的uri
@@ -48,10 +48,15 @@ if(config.env!='dev'){//开发环境不需要过滤
         if (inWhitelist) {//在白名单中，不需要过滤
             next();
         }else{
-            if(req.session && req.session.admin){//如果存在session则继续
+            if(req.session && req.session.user){//如果存在session则继续
                 next();
             }else{
-                res.redirect("/auth/login");
+                if(requestPath.indexOf('login') != -1){
+                  next();  
+              }else{
+                req.session.path = requestPath;
+                res.redirect(config.redirectPath + "login");
+              }
             }
         }
     });

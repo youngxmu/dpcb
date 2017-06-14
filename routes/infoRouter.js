@@ -40,7 +40,8 @@ var dataMap = {
 
 
 router.get('/list', function(req, res, next) {
-    return res.render('main/info-list');
+	var user = req.session.user;
+    return res.render('main/info-list', user);
 });
 
 router.post('/infolist', function(req, res, next) {
@@ -71,4 +72,3 @@ router.post('/detail', function(req, res, next) {
 });
 
 module.exports = router;
-

@@ -38,96 +38,96 @@ fis.config.merge({
         ]
     },
     deploy : {
-        nodeS1 : [
+        youngS : [
             {
-                receiver : 'http://10.99.113.15:8999/receiver',
+                receiver : 'http://139.199.57.52:8999',
                 from : '/public',
-                to : '/young/node/qkwx/public',
+                to : '/young/node/dpcb/public',
                 subOnly : true
             },
             {
-                receiver : 'http://10.99.113.15:8999/receiver',
+                receiver : 'http://139.199.57.52:8999',
                 from : '/public',
-                to : '/young/static/qkwx',
+                to : '/young/static/dpcb',
                 subOnly : true
             },
             {
-                receiver : 'http://10.99.113.15:8999/receiver',
+                receiver : 'http://139.199.57.52:8999',
                 include : ['/views/**'],
                 from : '/views',
-                to : '/young/node/qkwx/views',
+                to : '/young/node/dpcb/views',
                 subOnly : true,
                 replace : {
-                    from : 'http://10.99.13.32:8561',
-                    to : 'http://act.cnhubei.com/qkwx'
+                    from : 'http://10.99.13.32:8889',
+                    to : 'http://jnly.me/dpcb'
                 }
             }
         ],
-        node1 : [
+        young : [
             {
-                receiver : 'http://10.99.113.15:8999/receiver',
+                receiver : 'http://jnly.me/rec',
                 from : '/public',
-                to : '/young/node/qkwx/public',
+                to : '/young/node/dpcb/public',
                 subOnly : true
             },
             {
-                receiver : 'http://10.99.113.15:8999/receiver',
+                receiver : 'http://jnly.me/rec',
                 from : '/public',
-                to : '/young/static/qkwx',
+                to : '/young/static/dpcb',
                 subOnly : true
             },
             {
-                receiver : 'http://10.99.113.15:8999/receiver',
+                receiver : 'http://jnly.me/rec',
                 include : ['/views/**'],
                 from : '/views',
-                to : '/young/node/qkwx/views',
+                to : '/young/node/dpcb/views',
                 subOnly : true,
                 replace : {
-                    from : 'http://10.99.13.32:8561',
-                    to : 'http://act.cnhubei.com/qkwx'
+                    from : 'http://10.99.13.32:8889',
+                    to : 'http://jnly.me/dpcb'
                 }
             },
             {
-                receiver : 'http://10.99.113.15:8999/receiver',
+                receiver : 'http://jnly.me/rec',
                 include : ['/config/*.js'],
                 from : '/config',
-                to : '/young/node/qkwx/config',
+                to : '/young/node/dpcb/config',
                 subOnly : true
             },
             {
-                receiver : 'http://10.99.113.15:8999/receiver',
+                receiver : 'http://jnly.me/rec',
                 include : ['/lib/**'],
                 from : '/lib',
-                to : '/young/node/qkwx/lib',
+                to : '/young/node/dpcb/lib',
                 subOnly : true
             },
             {
-                receiver : 'http://10.99.113.15:8999/receiver',
+                receiver : 'http://jnly.me/rec',
                 include : ['/routes/*.js'],
                 from : '/routes',
-                to : '/young/node/qkwx/routes',
+                to : '/young/node/dpcb/routes',
                 subOnly : true
             },
             {
-                receiver : 'http://10.99.113.15:8999/receiver',
+                receiver : 'http://jnly.me/rec',
                 include : ['/models/**'],
                 from : '/models',
-                to : '/young/node/qkwx/models',
+                to : '/young/node/dpcb/models',
                 subOnly : true
             },
             {
-                receiver : 'http://10.99.113.15:8999/receiver',
+                receiver : 'http://jnly.me/rec',
                 include : ['app.js'],
                 from : '/',
-                to : '/young/node/qkwx',
+                to : '/young/node/dpcb',
                 subOnly : true
             }
             ,
             {
-                receiver : 'http://10.99.113.15:8999/receiver',
+                receiver : 'http://jnly.me/rec',
                 include : ['route.js'],
                 from : '/',
-                to : '/young/node/qkwx',
+                to : '/young/node/dpcb',
                 subOnly : true
             }
         ]

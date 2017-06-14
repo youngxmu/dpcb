@@ -4,6 +4,7 @@
     tpl : {},
     status : 0,
 		init : function(){
+      _this.cid = $('#cid').val();
 			_this.tpl.orderListTpl = juicer($('#order_list_tpl').html());
 			_this.initEvent();
       _this.loadData();
@@ -28,9 +29,10 @@
 		},
     loadData : function(){
       $.ajax({
-        url : 'order/list',
+        url : ctx + 'r/myorder',
         type : 'post',
         data : {
+          cid :
           status : _this.status
         },
         success : function(result){

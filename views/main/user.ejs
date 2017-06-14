@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<%- include ../common/meta.ejs %>
+	<title>资讯列表</title>
+	<link rel="stylesheet" type="text/css" href="css/user.css">
+</head>
+<body>
+	<div id="wrapper" class="container">
+		<div class="top-bg">
+			<span class="user-name"><%= sname %></span>
+			<span class="user-avatar">
+				<img src="<%= avatar %>">
+			</span>
+			<span class="btn-setting"></span>
+		</div>
+		<div class="menu-box" >
+			<dl>
+				<a href="user/order" class="ico order">我的订单</a>
+				<a href="user/score" class="ico score">我的积分</a>
+				<a href="user/fav" class="ico fav">我的收藏</a>
+			</dl>
+			<dl>
+				<a href="user/share" class="ico order">我的分享</a>
+				<a href="user/complain" class="ico score">投诉服务</a>
+				<a href="s/about" class="ico fav">关于我们</a>
+			</dl>
+		</div>
+	</div>
+	<script type="text/juicer" id="user_list_tpl">
+		{@each list as obj, index}
+		<li data-id="${obj.iid}">
+			<span class="pic">
+				<img src="${obj.pics}">
+			</span>
+			<div class="title">${obj.title}</div>
+			<div class="loc">总价：${obj.kind}</div>
+			<div class="date-time">${obj.start}</div>
+		</li>
+		{@/each}
+	</script>
+	<script type="text/javascript" src='js/user-list.js'></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			moka.user.list.init();
+		});
+	</script>
+</body>
+</html>
