@@ -14,7 +14,7 @@
         //e.preventDefault();
       });
 
-      $('#wrapper').on('tap', '.nav-panel li', function(){
+      $('#wrapper').on('click', '.nav-panel li', function(){
         var $this = $(this);
         _this.kind = $this.attr('data-kind');
         if($this.hasClass('active')){
@@ -24,7 +24,7 @@
         _this.loadData();
       });
 
-      $('#wrapper').on('click', '.info-list li', function(){
+      $('#wrapper').on('click', '.info-list li .pic', function(){
         var id = $(this).attr('data-id');
         window.location.href = 'info/detail/' + id;
       });
@@ -79,8 +79,10 @@
     fav : function(event){
       event.preventDefault();
       event.stopPropagation();
-      var id = $(this).attr('data-id');
-      var kind = $(this).attr('data-kind');
+      var $this = $(this);
+      var id = $this.attr('data-id');
+      var kind = $this.attr('data-kind');
+      $this.addClass('active');
       $.ajax({
         url : ctx + 'r/fav',
         type : 'post',
@@ -101,8 +103,10 @@
     share : function(event){
       event.preventDefault();
       event.stopPropagation();
-      var id = $(this).attr('data-id');
-      var kind = $(this).attr('data-kind');
+      var $this = $(this);
+      var id = $this.attr('data-id');
+      var kind = $this.attr('data-kind');
+      $this.addClass('active');
       $.ajax({
         url : ctx + 'r/share',
         type : 'post',

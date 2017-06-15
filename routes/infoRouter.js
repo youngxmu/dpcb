@@ -57,8 +57,10 @@ router.post('/infolist', function(req, res, next) {
 });
 
 router.get('/detail/:id', function(req, res, next) {
+	var user = req.session.user;
+	var cid = user.cid;
 	var id = req.params.id;
-	return res.render('main/info-detail', {id:id});
+	return res.render('main/info-detail', {id:id, cid:cid});
 });
 
 

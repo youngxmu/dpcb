@@ -57,7 +57,7 @@ if(config.env!='devv'){//开发环境不需要过滤
               }else{
                 req.session.path = requestPath;
                 if(requestPath.indexOf('http') == -1){
-                    req.session.path = config.redirectPath + requestPath;
+                    // req.session.path = config.redirectPath + requestPath;
                 }
                 res.redirect(config.redirectPath + "login");
               }

@@ -8,11 +8,13 @@
 <body>
 	<input id="cid" type="hidden" value="<%= cid %>" >
 	<div id="wrapper" class="container">
-		<ul class="nav-panel">
-			<li class="active" data-status="0"><span>待使用</span></li>
-			<li data-status="1"><span>已使用</span></li>
-		</ul>
-		<ul id="order_list" class="order-list"></ul>
+		<div class="list-panel">
+			<ul class="nav-panel">
+				<li class="active" data-status="0"><span>待使用</span></li>
+				<li data-status="1"><span>已使用</span></li>
+			</ul>
+			<ul id="order_list" class="order-list"></ul>
+		</div>
 	</div>
 	<script type="text/juicer" id="order_list_tpl">
 		{@each list as obj, index}

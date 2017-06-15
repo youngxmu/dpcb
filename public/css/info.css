@@ -1,7 +1,20 @@
+.container{
+	height: 100%;
+}
+.list-panel{
+	padding-top: 0.9rem;
+	position: relative;
+	height: 100%;
+}
+
 .nav-panel{
 	height: 0.75rem;
 	background-color: #ffffff;
 	margin-bottom: 0.2rem;
+	position: absolute;
+	top: 0;
+	left: 0;
+    width: 100%;
 }
 
 .nav-panel li{
@@ -44,6 +57,9 @@
 .info-list{
 	padding: 0.2rem;
 	background-color: #ffffff;
+	height: 100%;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch
 }
 
 .info-list li{
@@ -111,6 +127,10 @@
 	top: 0;
 }
 
+.info-list li .other .btn-fav.active{
+	background-image: url('../img/fav_a.png');
+}
+
 .info-list li .other .btn-share{
 	width: 0.4rem;
 	height: 0.4rem;
@@ -148,6 +168,10 @@
 	position: absolute;
 	right: 0.9rem;
 	top: 0.2rem;
+}
+
+.info-detail .text .name .btn-fav.active{
+	background-image: url('../img/fav_a.png');
 }
 
 .info-detail .text .name .btn-share{

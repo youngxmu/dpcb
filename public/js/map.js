@@ -1,13 +1,23 @@
 var mapList = [
+  // {
+  //   sid : '872010017266733056',
+  //   name : '望江亭',
+  //   pos : 'left:2.92rem;top:0.71rem;'
+  // },
+  // {
+  //   sid : '872630938830639104',
+  //   name : '雪堂',
+  //   pos : 'left: 3.47rem;top: 1.14rem;}'
+  // }
   {
-    sid : '872010017266733056',
-    name : '望江亭',
-    pos : 'left:2.92rem;top:0.71rem;'
+    sid : '1',
+    name : '东坡塑像',
+    pos : 'left: 3.94rem;top: 3.63rem;'
   },
   {
-    sid : '872630938830639104',
-    name : '雪堂',
-    pos : 'left: 3.47rem;top: 1.14rem;}'
+    sid : '8',
+    name : '二赋堂',
+    pos : 'left: 0.17rem;top: 4.06rem;'
   }
 ];
 

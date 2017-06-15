@@ -8,20 +8,19 @@
 <body>
 	<input id="cid" type="hidden" value="<%= cid %>" >
 	<div id="wrapper" class="container">
-		<ul class="nav-panel">
-			<li class="active" data-kind="1"><span>景区活动</span></li>
-			<li data-kind="2"><span>周边活动</span></li>
-			<li data-kind="3"><span>商家活动</span></li>
-		</ul>
-		<ul id="info_list" class="info-list"></ul>
-
+		<div class="list-panel">
+			<ul class="nav-panel">
+				<li class="active" data-kind="1"><span>景区活动</span></li>
+				<li data-kind="2"><span>周边活动</span></li>
+				<li data-kind="3"><span>商家活动</span></li>
+			</ul>
+			<ul id="info_list" class="info-list"></ul>
+		</div>
 	</div>
 	<script type="text/juicer" id="info_list_tpl">
 		{@each list as obj, index}
 		<li data-id="${obj.iid}">
-			<div class="pic">
-				<img src="${index|getImgHost}${obj.pics}">
-			</div>
+			<div class="pic" data-id="${obj.iid}">$${obj.pics|getPics}</div>
 			<div class="title">
 				<span>${obj.title}</span>
 				<span class="date-time">${obj.start}</span>
