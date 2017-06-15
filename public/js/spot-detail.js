@@ -36,6 +36,7 @@
       event.preventDefault();
       event.stopPropagation();
       var id = _this.spotId;
+      $(this).addClass('active');
       $.ajax({
         url : ctx + 'r/fav',
         type : 'post',
@@ -57,6 +58,7 @@
     share : function(event){
       event.preventDefault();
       event.stopPropagation();
+      $(this).addClass('active');
       var id = _this.spotId;
       $.ajax({
         url : ctx + 'r/share',

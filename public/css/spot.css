@@ -92,6 +92,10 @@
 	top: 0.2rem;
 }
 
+.spot-detail .text .name .btn-fav.active{
+	background-image: url('../img/fav_a.png');
+}
+
 .spot-detail .text .name .btn-share{
 	width: 0.4rem;
 	height: 0.4rem;
