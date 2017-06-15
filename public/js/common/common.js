@@ -1,10 +1,12 @@
 var moka = {
+	map : {},
 	spot : {},
 	info : {},
 	fav : {},
 	share : {},
 	hotel : {},
 	user : {},
+	ticket : {},
 	order : {}
 };
 

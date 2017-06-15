@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<%- include ../common/meta.ejs %>
+	<title>购买门票</title>
+	<link rel="stylesheet" type="text/css" href="css/ticket-buy.css">
+</head>
+<body>
+	<input id="cid" type="hidden" value="<%= cid %>" >
+	<input id="tid" type="hidden" value="<%= tid %>" >
+	<div id="wrapper" class="container">
+		<div class="order-detail">
+			<div class="title">订单填写</div>
+			<div id="ticket_buy" class="prod-info">
+				
+			</div>
+			<div class="order-info">
+				<dl>
+					<dt>使用日期</dt>
+					<dd class="time-box">
+						<input name="sdate" type="date" palceholder="请选择使用日期">
+						<span class="more"></span>
+					</dd>
+				</dl>
+				<dl>
+					<dt>购买数量</dt>
+					<dd>
+						<div class="count-box">
+							<span class="dec">-</span>
+							<input  id="num" type="text" name="num" value="1">
+							<span class="inc">+</span>
+						</div>
+					</dd>
+				</dl>
+			</div>
+			<div class="tel-info">
+				<dl class="input-line">
+					<label>姓名</label>
+					<input name="cname" placeholder="请输入姓名">
+				</dl>
+				<dl class="input-line">
+					<label>身份证</label>
+					<input name="id" placeholder="请输入身份证">
+				</dl>
+				<dl class="input-line">
+					<label>手机号</label>
+					<input id="phone" name="phone" placeholder="请输入注册手机号">
+				</dl>
+				<dl class="input-line code-line">
+					<label>验证码</label>
+					<input name="vcode" placeholder="请输入接收的验证码">
+					<span class="btn-code">获取验证码</span>
+				</dl>
+			</div>
+			<div class="btn-commit">提交订单</div>
+		</div>
+	</div>
+	<script type="text/juicer" id="ticket_tpl">
+		<span class="pic">$${spics|getPic}</span>
+		<div class="name">${title}</div>
+		<div class="desc">${memo}</div>
+		<div class="single-price"><span>￥${disprice}</span>/张</div>
+	</script>
+	<script type="text/javascript" src='js/ticket-buy.js'></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			moka.ticket.buy.init();
+		});
+	</script>
+</body>
+</html>

@@ -1,28 +1,26 @@
 (function(P){
 	var _this = null;
-	_this = P.hotel.detail = {
+	_this = P.ticket.detail = {
     tpl : {},
 		init : function(){
-      _this.hotelId = $('#hotel_id').val();
-			_this.tpl.hotelTpl = juicer($('#hotel_tpl').html());
+      _this.cid = $('#cid').val();
+			_this.tpl.ticketTpl = juicer($('#ticket_tpl').html());
 			_this.initEvent();
       _this.loadData();
 		},
 		initEvent : function(){
       $('#wrapper').on('touchstart', function(e){
-        //e.preventDefault();
       });
 		},
     loadData : function(){
       $.ajax({
-        url : ctx + 'r/hoteldetail',
+        url : ctx + 'r/ticketdetail',
         type : 'post',
-        data : {hid:_this.hotelId},
         dataType : 'json',
         success : function(result){
-          if(result.ret_code == 0){
-            var html = _this.tpl.hotelTpl.render(result.value);
-            $('#hotel_detail').html(html);
+          if(result.ret_code){
+            var html = _this.tpl.ticketTpl.render(result.value);
+            $('#ticket_detail').html(html);
           }
         },
         error : function(){

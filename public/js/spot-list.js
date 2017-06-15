@@ -9,7 +9,7 @@
 		},
 		initEvent : function(){
       $('#wrapper').on('touchstart', function(e){
-        e.preventDefault();
+        //e.preventDefault();
       });
       $('#wrapper').on('tap', '.spot-list li', function(){
         var id = $(this).attr('data-id');

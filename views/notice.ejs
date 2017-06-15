@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<%- include common/meta.ejs %>
+	<title>最新公告</title>
+	<style type="text/css">
+		.about-container{margin-top: 0.2rem;background-color: #ffffff;}
+		.about-container dl{
+			height: 1rem;
+			line-height: 1rem;
+			border-bottom: 0.01rem solid #cccccc;
+			font-size: 0.3rem;
+			text-align: left;
+			color: #363636;
+			padding: 0 0.2rem;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrapper" class="container"></div>
+	<script type="text/juicer" id="notice_tpl">
+		<div class="title">${title}</div>
+		<div class="info">
+			<span class="date">${crtDate}</span>
+		</div>
+		<div class="content">${content}</div>
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var tpl = juicer($('#notice_tpl').html());
+			$.ajax({
+		        url : ctx + 'r/notice',
+		        type : 'post',
+		        dataType : 'json',
+		        success : function(result){
+		          if(result.ret_code){
+		            var html = tpl.render(result.value);
+		            $('#wrapper').html(html);
+		          }
+		        },
+		        error : function(){
+		        }
+	      	});
+		});
+	</script>
+</body>
+</html>

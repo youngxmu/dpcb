@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<%- include common/meta.ejs %>
+	<title>地图导航</title>
+	<link rel="stylesheet" type="text/css" href="css/map.css">
+</head>
+<body>
+	<div id="wrapper" class="container">
+		<div id="map_panel" class="map-panel">
+			<img src="img/map/map.png">
+
+			<a class="btn-list" href="spot/list"></a>
+		</div>
+	</div>
+	<script type="juicer/javascript" id="pos-tpl">
+		{@each list as obj, index}
+			<span class="pos" style="${obj.pos}" data-sid="${obj.sid}"></span>
+		{@/each}
+	</script>
+	<script type="text/javascript" src='js/map.js'></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			moka.map.init();
+		});
+	</script>
+</body>
+</html>

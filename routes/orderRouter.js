@@ -84,6 +84,8 @@ router.get('/create/:prodId', function(req, res, next) {
 		id : 1,
 		name : '东坡赤壁门票',
 		desc : '购票须知：门票门票门票门票门票门票门票门票门票门票门票门票门票门票门票门票门票门票门票门票门票门票门票门票',
+		spic : 'img/order/pics/dpsx.png',
+		amount  : 38,
 		price : 38
 	};
 	return res.render('main/order-create', prod);

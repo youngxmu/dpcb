@@ -11,7 +11,7 @@
 		},
 		initEvent : function(){
       $('#wrapper').on('touchstart', function(e){
-        e.preventDefault();
+        //e.preventDefault();
       });
       $('#wrapper').on('tap', '.nav-panel li', function(){
         var $this = $(this);

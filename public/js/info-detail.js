@@ -10,7 +10,7 @@
 		},
 		initEvent : function(){
       $('#wrapper').on('touchstart', function(e){
-        e.preventDefault();
+        //e.preventDefault();
       });
 		},
     loadData : function(){

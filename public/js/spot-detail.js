@@ -10,7 +10,7 @@
 		},
 		initEvent : function(){
       $('#wrapper').on('touchstart', function(e){
-        e.preventDefault();
+        //e.preventDefault();
       });
 
       $('#wrapper').on('tap', '.btn-fav', _this.fav);

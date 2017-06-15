@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<%- include ../common/meta.ejs %>
+	<title>门票详情</title>
+	<link rel="stylesheet" type="text/css" href="css/ticket.css">
+</head>
+<body>
+	<input id="cid" type="hidden" value="<%= cid %>" >
+	<div id="wrapper" class="container">
+		<div id="ticket_detail" class="ticket-detail">
+			
+
+		</div>
+
+	</div>
+	<script type="text/juicer" id="ticket_tpl">
+		<div class="pic">
+			$${pics|getPic}
+			<span class="ico-discount"></span>
+		</div>
+		<div class="text">
+			<div class="desc">${content}</div>
+		</div>
+		<div class="bottom-bar">
+			<div class="price-box">
+				<span class="curr-price">￥${disprice}</span>
+				<span class="org-price">${price}</span>
+			</div>
+			<a href="ticket/buy/${tid}" class="btn-commit">立即购买</a>
+		</div>
+	</script>
+	<script type="text/javascript" src='js/ticket-detail.js'></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			moka.ticket.detail.init();
+		});
+	</script>
+</body>
+</html>

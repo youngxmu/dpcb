@@ -3,28 +3,47 @@
 <head>
 	<%- include ../common/meta.ejs %>
 	<title>资讯列表</title>
-	<link rel="stylesheet" type="text/css" href="css/fav.css">
+	<link rel="stylesheet" type="text/css" href="css/score.css">
 </head>
 <body>
+	<input id="cid" type="hidden" value="<%= cid %>" >
 	<div id="wrapper" class="container">
-		<ul id="fav_list" class="fav-list"></ul>
+		<div class="score-box">
+			<span class="score-count"></span>
+		</div>
+		<div class="list-panel">
+			<ul class="nav-panel">
+				<li class="active" data-kind="1"><span>兑换商品</span></li>
+				<li data-kind="2"><span>兑换记录</span></li>
+			</ul>
+			<ul id="prod_list" class="prod-list"></ul>
+			<ul id="recd_list" class="recd-list"></ul>
+		</div>
 	</div>
-	<script type="text/juicer" id="fav_list_tpl">
+	<script type="text/juicer" id="prod_list_tpl">
 		{@each list as obj, index}
-		<li data-id="${obj.iid}">
-			<span class="pic">
-				<img src="${obj.pics}">
-			</span>
+		<li>
+			<div class="pic">$${obj.spics|getPic}</div>
 			<div class="title">${obj.title}</div>
-			<div class="loc">总价：${obj.kind}</div>
+			<div class="point">${obj.point}积分</div>
+			<div class="btn-exc" data-id="${obj.gid}">兑换</div>
+		</li>
+		{@/each}
+	</script>
+	<script type="text/juicer" id="recd_list_tpl">
+		{@each list as obj, index}
+		<li data-id="${obj.gid}">
+			<div class="pic">$${obj.spics|getPic}</div>
+			<div class="title">${obj.title}</div>
+			<div class="point">${obj.point}积分</div>
 			<div class="date-time">${obj.start}</div>
 		</li>
 		{@/each}
 	</script>
-	<script type="text/javascript" src='js/fav-list.js'></script>
+	<script type="text/javascript" src='js/user-score.js'></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			moka.fav.list.init();
+			moka.user.score.init();
 		});
 	</script>
 </body>

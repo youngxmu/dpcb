@@ -11,7 +11,7 @@
 		},
 		initEvent : function(){
       $('#wrapper').on('touchstart', function(e){
-        e.preventDefault();
+        //e.preventDefault();
       });
       $('#wrapper').on('tap', '.share-list li', function(){
         var id = $(this).attr('data-id');

@@ -1,8 +1,20 @@
+.container{
+	height: 100%;
+}
+.list-panel{
+	padding-top: 0.9rem;
+	position: relative;
+	height: 100%;
+}
 .nav-panel{
 	height: 0.75rem;
 	background-color: #ffffff;
 	margin-bottom: 0.2rem;
 	font-size: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+    width: 100%;
 }
 
 .nav-panel li{
@@ -33,6 +45,9 @@
 
 .hotel-list{
 	background-color: #f6f6f6;
+	height: 100%;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch
 }
 
 .hotel-list li{
@@ -102,7 +117,7 @@
 	background-position: left center;
 	padding-left: 0.34rem;
 	display: inline-block;
-	width: 2.4rem;
+	width: 2.3rem;
 	overflow: hidden;
 	text-overflow:ellipsis;
 	white-space: nowrap;

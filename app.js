@@ -37,6 +37,7 @@ if(config.env!='devv'){//开发环境不需要过滤
     var whitelist = config.whitelist;
     app.use(function(req, res, next) {//判断是否登录的中间件
         var requestPath = req.path;//请求的uri
+        console.log(requestPath);
         var inWhitelist = false;
         for (var i in whitelist) {
             if (requestPath == whitelist[i]) {
@@ -55,6 +56,9 @@ if(config.env!='devv'){//开发环境不需要过滤
                   next();  
               }else{
                 req.session.path = requestPath;
+                if(requestPath.indexOf('http') == -1){
+                    req.session.path = config.redirectPath + requestPath;
+                }
                 res.redirect(config.redirectPath + "login");
               }
             }

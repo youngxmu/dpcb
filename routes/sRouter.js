@@ -13,6 +13,10 @@ router.get('/about', function(req, res, next) {
     return res.render('about');
 });
 
+router.get('/notice', function(req, res, next) {
+    return res.render('notice');
+});
+
 router.get('/rule', function(req, res, next) {
     return res.render('rule');
 });

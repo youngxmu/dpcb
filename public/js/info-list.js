@@ -11,7 +11,7 @@
 		},
 		initEvent : function(){
       $('#wrapper').on('touchstart', function(e){
-        e.preventDefault();
+        //e.preventDefault();
       });
 
       $('#wrapper').on('tap', '.nav-panel li', function(){
@@ -24,12 +24,12 @@
         _this.loadData();
       });
 
-      $('#wrapper').on('tap', '.info-list li .pic', function(){
+      $('#wrapper').on('click', '.info-list li', function(){
         var id = $(this).attr('data-id');
         window.location.href = 'info/detail/' + id;
       });
-      $('#wrapper').on('tap', '.btn-fav', _this.fav);
-      $('#wrapper').on('tap', '.btn-share', _this.share);
+      $('#wrapper').on('click', '.btn-fav', _this.fav);
+      $('#wrapper').on('click', '.btn-share', _this.share);
 		},
     loadData : function(){
       $.ajax({

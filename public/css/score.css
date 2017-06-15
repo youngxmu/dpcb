@@ -1,0 +1,119 @@
+.score-box{
+	width: 100%;
+	height: 3.2rem;
+	background-image: url('../img/user/score-bg.jpg');
+	background-position: center center;
+	background-size: auto 3.2rem;
+	background-repeat: no-repeat;
+	background-color: #ffffff;
+	position: relative;
+	border-bottom: 0.01rem solid #cccccc;
+}
+
+.score-box .score-count{
+	width: 2.2rem;
+	height: 0.5rem;
+	line-height: 0.5rem;
+	position: absolute;
+	left: 50%;
+	margin-left: -1.1rem;
+	top: 2rem;
+	font-size: 0.36rem;
+	text-align: center;
+	color: #68EAFA;
+}
+
+.nav-panel{
+	height: 0.75rem;
+	background-color: #ffffff;
+	margin-bottom: 0.2rem;
+	font-size: 0;
+}
+
+.nav-panel li{
+	width: 50%;
+	height: 100%;
+	text-align: center;
+	display: inline-block;
+}
+
+.nav-panel li span{
+	font-size: 0.26rem;
+	font-weight: 500;
+	color: #666666;
+	width: 1.2rem;
+	height: 0.75rem;
+	line-height: 0.75rem;
+	display: inline-block;
+	vertical-align: top;
+	text-align: center;
+}
+
+.nav-panel li.active span{
+	color: #01CFDC;
+	border-bottom: 0.05rem solid #01CFDC;
+}
+
+
+.prod-list{padding: 0.2rem;}
+.prod-list li{
+	height: 1.4rem;
+	margin-bottom: 0.3rem;
+	background-color: #ffffff;
+	position: relative;
+	padding-left: 1.5rem;
+	padding-right: 1.5rem;
+}
+
+.prod-list li .pic{
+	width: 1.2rem;height: 1.2rem;
+	position: absolute;
+	top: 0.1rem;
+	left: 0.1rem;
+	border-radius: 0.6rem;
+	overflow: hidden;
+}
+
+
+.prod-list li .pic img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.prod-list li .title{
+	line-height: 0.8rem;
+	height: 0.8rem;
+	font-size: 0.32rem;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+	width: 100%;
+}
+.prod-list li .point{
+	line-height: 0.6rem;
+	height: 0.6rem;
+	color: #FF9C44;
+	font-size: 0.26rem;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+	width: 100%;
+}
+
+.prod-list li .btn-exc{
+	width: 1.2rem;
+	height: 0.6rem;
+	line-height: 0.6rem;
+	text-align: center;
+	border-radius: 0.05rem;
+	background-color: #FF9C44;
+	color: #ffffff;
+	position: absolute;top: 0.4rem;
+	right: 0.1rem;
+	font-size: 0.26rem;
+}
+
+.recd-list{display: none;}
+
+/*FF9C44*/

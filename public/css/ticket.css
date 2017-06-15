@@ -1,0 +1,100 @@
+.container{
+	padding: 0.2rem;
+	height: 100%;
+}
+/** detail */
+.ticket-detail{
+	width: 100%;
+	position: relative;
+	padding-top: 3.4rem;
+	padding-bottom: 1.6rem;
+	height: 100%;
+}
+
+.ticket-detail .pic{
+	width: 100%;height:3.4rem;font-size: 0;
+	position: absolute;
+	z-index: -1;
+	top: 0;
+	left: 0;
+}
+.ticket-detail .pic img{width: 100%;height: 100%;object-fit:cover;}
+.ticket-detail .pic .ico-discount{
+	width: 1.02rem;
+	height: 0.4rem;
+	background-image: url('../img/ticket/discount.png');
+	background-position: center center;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	position: absolute;
+	left: 0;
+	top: 0.2rem;
+}
+.ticket-detail .text{
+	color: #666666;
+	margin-top: -0.2rem;
+	width: 100%;
+	height: 100%;
+	background-image: url('../img/ticket/text-bg.png');
+	background-position: center top;
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+	padding-top: 0.2rem;
+}
+.ticket-detail .text .desc{width: 100%;padding: 0.2rem;text-align: justify;line-height: 2;font-size: 0.28rem;
+	height: 100%;
+	background-color: #ffffff;
+}
+
+.ticket-detail .bottom-bar{
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 100%;
+	height: 1.8rem;
+	background-color: #ffffff;
+}
+
+.ticket-detail .bottom-bar .price-box{
+	width: 100%;
+	position: absolute;
+	bottom: 0.8rem;
+	line-height: 0.4rem;
+	height: 0.4rem;
+	text-align: right;
+	font-size: 0;
+}
+
+.ticket-detail .bottom-bar .price-box .curr-price{
+	line-height: 0.4rem;
+	height: 0.4rem;	
+	font-size: 0.28rem;
+	color: #FE3555;
+	display: inline-block;
+	vertical-align: top;
+}
+.ticket-detail .bottom-bar .price-box .org-price{
+	line-height: 0.4rem;
+	height: 0.4rem;
+	color: #333;
+	font-size: 0.26rem;
+	margin: 0 0.2rem;
+	display: inline-block;
+	vertical-align: top;
+	text-decoration: line-through;
+}
+
+.ticket-detail .bottom-bar .btn-commit{
+	background-color: #FE3555;
+	color: #ffffff;
+	width: 1.4rem;
+	height: 0.6rem;
+	line-height: 0.6rem;
+	border-radius: 0.05rem;
+	font-size: 0.28rem;
+	position: absolute;
+	bottom: 0.1rem;
+	right: 0.2rem;
+	text-align: center;
+}
+
