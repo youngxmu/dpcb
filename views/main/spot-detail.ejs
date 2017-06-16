@@ -22,6 +22,10 @@
 			</div>
 			<div class="desc">${content}</div>
 		</div>
+		{@if videos}
+		<audio id="text_audio" src="${videos}" style="display:none;"></audio>
+		<span class="btn-audio" ></span>
+		{@/if}
 	</script>
 	<script type="text/javascript" src='js/spot-detail.js'></script>
 	<script type="text/javascript">

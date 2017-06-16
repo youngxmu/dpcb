@@ -9,7 +9,7 @@ module.exports = {
 	env: 'dev',
 	logfile: path.resolve(__dirname, '..', 'logs/access.log'),
 	sessionSecret: 'session_secret_random_seed',
-	redirectPath : 'http://jnly.me/dpcb/',
+	redirectPath : 'http://www.viscloud.cn/dpcb/',
 	// redirectPath : '/',
 	wxapptype : 'zy',
 	//mysql config

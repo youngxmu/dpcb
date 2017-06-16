@@ -2,7 +2,7 @@
 <html>
 <head>
 	<%- include ../common/meta.ejs %>
-	<title>资讯列表</title>
+	<title>我的收藏</title>
 	<link rel="stylesheet" type="text/css" href="css/fav.css">
 </head>
 <body>
@@ -13,7 +13,7 @@
 	<script type="text/juicer" id="fav_list_tpl">
 		{@each list as obj, index}
 		<li data-id="${obj.id}">
-			<span class="pic">${pics|getPic}</span>
+			<span class="pic">$${obj.spics|getPic}</span>
 			<div class="title">${obj.title}</div>
 			<div class="loc">${obj.source}</div>
 			<div class="date-time">${obj.ftime|getDate}</div>

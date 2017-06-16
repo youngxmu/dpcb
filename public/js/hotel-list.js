@@ -38,7 +38,6 @@
             var list = [];
             for(var index in result.list){
               var hotel = result.list[index];
-              console.log(hotel.kind + "  " + _this.kind);
               if(hotel.kind == _this.kind){
                 list.push(hotel);
               }
@@ -50,11 +49,9 @@
             var list = [];
             for(var index in result.value){
               var hotel = result.value[index];
-              console.log(hotel.kind + "  " + _this.kind);
               if(hotel.kind == _this.kind){
                 list.push(hotel);
               }
-              list.push(hotel);
             }
             var html = _this.tpl.hotelListTpl.render({list: list});
             $('#hotel_list').html(html); 

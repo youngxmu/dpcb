@@ -27,7 +27,7 @@ app.use(cookie); //须在expressSession前使用cookieParser
 var sessionStore = new expressSession.MemoryStore();
 app.use(expressSession({
     secret: config.sessionSecret,
-    key: 'qkId', //种到cookies里的标识
+    key: 'dpcb_id', //种到cookies里的标识
     store: sessionStore
 }));
 //app.use(csrf());
@@ -52,12 +52,15 @@ if(config.env!='devv'){//开发环境不需要过滤
             if(req.session && req.session.user){//如果存在session则继续
                 next();
             }else{
-                if(requestPath.indexOf('login') != -1){
-                  next();  
+              if(requestPath.indexOf('login') != -1){//访问的是login
+                next();  
               }else{
                 req.session.path = requestPath;
                 if(requestPath.indexOf('http') == -1){
-                    // req.session.path = config.redirectPath + requestPath;
+                    if(requestPath.indexOf('/') == 0){
+                        requestPath = requestPath.substr(1);
+                    }
+                    req.session.path = config.redirectPath + requestPath;
                 }
                 res.redirect(config.redirectPath + "login");
               }
