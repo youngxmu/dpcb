@@ -12,12 +12,12 @@ var mapList = [
   {
     sid : '1',
     name : '东坡塑像',
-    pos : 'left: 3.94rem;top: 3.63rem;'
+    pos : 'left: 3.9rem;top: 3.6rem;'
   },
   {
     sid : '8',
     name : '二赋堂',
-    pos : 'left: 0.17rem;top: 4.06rem;'
+    pos : 'left: 0.15rem;top: 4.02rem;'
   }
 ];
 

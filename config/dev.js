@@ -10,7 +10,7 @@ module.exports = {
 	logfile: path.resolve(__dirname, '..', 'logs/access.log'),
 	sessionSecret: 'session_secret_random_seed',
 	redirectPath : 'http://www.viscloud.cn/dpcb/',
-	wxapptype : 'zy',
+	wxapptype : 'dpcb',
 	//mysql config
 	host: "10.66.236.20",
 	user: "root",

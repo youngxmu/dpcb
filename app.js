@@ -37,7 +37,6 @@ if(config.env!='devv'){//开发环境不需要过滤
     var whitelist = config.whitelist;
     app.use(function(req, res, next) {//判断是否登录的中间件
         var requestPath = req.path;//请求的uri
-        console.log(requestPath);
         var inWhitelist = false;
         for (var i in whitelist) {
             if (requestPath == whitelist[i]) {
@@ -50,9 +49,10 @@ if(config.env!='devv'){//开发环境不需要过滤
             next();
         }else{
             if(req.session && req.session.user){//如果存在session则继续
+                console.log(req.session.user.sname + ' logined ' + requestPath);
                 next();
             }else{
-              if(requestPath.indexOf('login') != -1){//访问的是login
+              if(requestPath.indexOf('login') != -1 || requestPath.indexOf('test') != -1){//访问的是login
                 next();  
               }else{
                 req.session.path = requestPath;
