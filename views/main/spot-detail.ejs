@@ -20,10 +20,10 @@
 				<span class="btn-fav"></span>
 				<span class="btn-share"></span>
 			</div>
-			<div class="desc">${content}</div>
+			<div class="desc">$${content}</div>
 		</div>
 		{@if videos}
-		<audio id="text_audio" src="${videos}" style="display:none;"></audio>
+		<audio id="text_audio" src="${videos|getImgHost}${videos}" style="display:none;"></audio>
 		<span class="btn-audio" ></span>
 		{@/if}
 	</script>

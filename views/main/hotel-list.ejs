@@ -20,18 +20,18 @@
 	<script type="text/juicer" id="hotel_list_tpl">
 		{@each list as obj, index}
 		<li data-id="${obj.hid}">
-			<span class="pic">
-				<img src="img/order/pics/dpsx.jpg">
-			</span>
-			<div class="name">${obj.title}</div>
-			<div class="line">
-				<span class="tel">电话：${obj.phone}</span>
-				<span class="price">人均：<em class="red-hlight">￥${obj.price}/位</em></span>
+			<div class="hotel-info">
+				<span class="pic">$${obj.spics|getPics}</span>
+				<div class="name">${obj.title}</div>
+				<div class="line">
+					<span class="tel">电话：${obj.phone}</span>
+					<span class="price">人均：<em class="red-hlight">￥${obj.price}/位</em></span>
+				</div>
+				<div class="line">
+					<span class="address">地址：${obj.address}</span>
+				</div>
 			</div>
-			<div class="line">
-				<span class="address">地址：${obj.address}</span>
-			</div>
-			<div class="memo" style="display:none;">${obj.memo}</div>
+			<div class="memo" style="">${obj.memo}</div>
 		</li>
 		{@/each}
 	</script>

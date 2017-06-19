@@ -55,6 +55,7 @@ var util = {
 	},
 	loadingPanel : '<div id="loading_panel" class="weui_loading_toast" style="display:none;"><div class="weui_mask_transparent"></div><div class="weui_toast"><div class="weui_loading"><div class="weui_loading_leaf weui_loading_leaf_0"></div><div class="weui_loading_leaf weui_loading_leaf_1"></div><div class="weui_loading_leaf weui_loading_leaf_2"></div><div class="weui_loading_leaf weui_loading_leaf_3"></div><div class="weui_loading_leaf weui_loading_leaf_4"></div><div class="weui_loading_leaf weui_loading_leaf_5"></div><div class="weui_loading_leaf weui_loading_leaf_6"></div><div class="weui_loading_leaf weui_loading_leaf_7"></div><div class="weui_loading_leaf weui_loading_leaf_8"></div><div class="weui_loading_leaf weui_loading_leaf_9"></div><div class="weui_loading_leaf weui_loading_leaf_10"></div><div class="weui_loading_leaf weui_loading_leaf_11"></div></div><p class="weui_toast_content">数据加载中</p></div></div>',
 	msgTpl : '<div id="msg_dlg" class="js_dialog" style="display:none;"><div class="weui-mask"></div><div class="weui-dialog"><div class="weui-dialog__bd"></div><div class="weui-dialog__ft"><a href="javascript:util.closeMsg();" class="btn-ok weui-dialog__btn weui-dialog__btn_primary">好的</a></div></div></div>',
+	toastTpl : '<div id="toast" style="opacity: 0; display: none;"><div class="weui-mask_transparent"></div><div class="weui-toast"><i class="weui-icon-success-no-circle weui-icon_toast"></i><p class="weui-toast__content">已完成</p></div></div>',
 	showLoading : function(msg){
 		var $loadingPanel = $('#loading_panel');
 		if($loadingPanel.length == 0){
@@ -95,6 +96,27 @@ var util = {
 		$msgDlg.hide();
 		$msgDlg.find('.weui-dialog__bd').text('');
 	},
+	toast : function(msg){
+		var $toast = $('#toast');
+		if($toast.length == 0){
+			$('body').append(util.toastTpl);
+			$msgDlg = $('#toast');
+		}
+		if(msg){
+			$msgDlg.find('.weui-toast__content').text(msg);
+		}
+		$msgDlg.show();
+		setTimeout(function(){
+			$msgDlg.css('opacity', 1);
+			setTimeout(function(){
+				$msgDlg.css('opacity', 0);
+				$msgDlg.hide();
+
+			},1200);
+		},10);
+		
+	},
+	
 
 	date : {
 		getDate : function(dateStr){

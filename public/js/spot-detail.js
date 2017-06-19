@@ -3,6 +3,7 @@
 	_this = P.spot.detail = {
     tpl : {},
 		init : function(){
+      _this.cid = $('#cid').val();
       _this.spotId = $('#spot_id').val();
 			_this.tpl.spotTpl = juicer($('#spot_tpl').html());
 			_this.initEvent();
@@ -15,6 +16,8 @@
 
       $('#wrapper').on('tap', '.btn-fav', _this.fav);
       $('#wrapper').on('tap', '.btn-share', _this.share);
+
+      $('#wrapper').on('tap', '.btn-audio', _this.play);
 		},
     loadData : function(){
       $.ajax({
@@ -32,6 +35,16 @@
         }
       });
     },
+    play : function(){
+      var $audio = $('#text_audio');
+      if($audio.hasClass('play')){
+        $audio.removeClass('play');
+        $audio[0].pause();
+      }else{
+        $audio.addClass('play');
+        $audio[0].play();
+      }
+    },
     fav : function(event){
       event.preventDefault();
       event.stopPropagation();
@@ -48,7 +61,7 @@
         },
         success : function(result){
           if(result.ret_code == 0){
-            util.showMsg('收藏成功');
+            util.toast('收藏成功');
           }
         },
         error : function(){
@@ -71,7 +84,7 @@
         },
         success : function(result){
           if(result.ret_code == 0){
-            util.showMsg('分享成功');
+            util.toast('分享成功');
           }
         },
         error : function(){

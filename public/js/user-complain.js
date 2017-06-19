@@ -26,27 +26,40 @@
         var $this = $(this);
         var key = $this.attr('name');
         var val = $this.val();
+        // if(key == 'txt'){
+        //   val = encodeURI(encodeURI(val;
+        // }
         if(!val){
           complete = false;
         }
         data[key] = val;
       });
-      console.log(data);
       if(!complete){
         return util.showMsg('请填写所有信息');
       }
 
+      var strs = [];
+      for(var key in data){
+        var val = data[key];
+        strs.push(key +'=' + val);
+      }
+      var str = strs.join('&');
+
       $.ajax({
-        url : ctx + 'r/comp',
-        type : 'post',
-        data : data,
+        url : ctx + 'r/comp?' + str,
+        // url : ctx + 'r/comp',
+        type : 'get',
+        // type : 'post',
+        // data : data,
+        dataType : 'json',
         success : function(result){
-          if(result.success){
-            var html = _this.tpl.favListTpl.render(result);
-            $('#fav_list').html(html);
+          if(result.ret_code == 0){
+            return util.showMsg('提交成功');
           }
+          return util.showMsg('提交失败');
         },
         error : function(){
+          return util.showMsg('提交失败');
         },
         complete : function(){
           _this.commiting = false;

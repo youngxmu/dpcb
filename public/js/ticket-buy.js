@@ -17,6 +17,9 @@
       $('#wrapper').on('tap', '.dec', _this.dec);
       $('#wrapper').on('tap', '.inc', _this.inc);
       $('#wrapper').on('tap', '.btn-commit', _this.commit);
+      $('#wrapper').on('change', '#hide_date', function(){
+        $('#show_date').val($(this).val());
+      });
 		},
     loadData : function(){
       $.ajax({

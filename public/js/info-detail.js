@@ -3,6 +3,7 @@
 	_this = P.info.detail = {
     tpl : {},
 		init : function(){
+      _this.cid = $('#cid').val();
       _this.infoId = $('#info_id').val();
 			_this.tpl.infoTpl = juicer($('#info_tpl').html());
 			_this.initEvent();
@@ -41,14 +42,15 @@
       $.ajax({
         url : ctx + 'r/fav',
         type : 'post',
+        dataType : 'json',
         data : {
           cid : _this.cid,
           id : _this.infoId,
           kind : 3
         },
         success : function(result){
-          if(result.success){
-            util.dialog.infoDialog('收藏成功');
+          if(result.ret_code == 0){
+            util.toast('收藏成功');
           }
         },
         error : function(){
@@ -65,14 +67,15 @@
       $.ajax({
         url : ctx + 'r/share',
         type : 'post',
+        dataType : 'json',
         data : {
           cid : _this.cid,
           id : _this.infoId,
           kind : 3
         },
         success : function(result){
-          if(result.success){
-            util.dialog.infoDialog('收藏成功');
+          if(result.ret_code == 0){
+            util.toast('收藏成功');
           }
         },
         error : function(){

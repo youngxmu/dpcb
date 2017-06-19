@@ -86,14 +86,15 @@
       $.ajax({
         url : ctx + 'r/fav',
         type : 'post',
+        dataType : 'json',
         data : {
           cid : _this.cid,
           id : id,
           kind : 3
         },
         success : function(result){
-          if(result.success){
-            util.dialog.infoDialog('收藏成功');
+          if(result.ret_code == 0){
+            util.toast('收藏成功');
           }
         },
         error : function(){
@@ -110,14 +111,15 @@
       $.ajax({
         url : ctx + 'r/share',
         type : 'post',
+        dataType : 'json',
         data : {
           cid : _this.cid,
           id : id,
           kind : 3
         },
         success : function(result){
-          if(result.success){
-            util.dialog.infoDialog('收藏成功');
+          if(result.ret_code == 0){
+            util.toast('收藏成功');
           }
         },
         error : function(){
