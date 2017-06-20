@@ -4,6 +4,10 @@ var utils = require("../lib/utils");
 var logger = require("../lib/log").logger("sRouter");
 var router = express.Router();
 
+router.get('/bdmap', function(req, res, next) {
+    return res.render('bd-map');
+});
+
 
 router.get('/map', function(req, res, next) {
     return res.render('map');

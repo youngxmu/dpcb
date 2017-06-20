@@ -7,21 +7,13 @@
 </head>
 <body>
 	<div id="wrapper" class="container">
-		<div id="map_panel" class="map-panel">
-			<img src="img/map/map.png">
-
-			<a class="btn-list" href="spot/list"></a>
-		</div>
+		<div id="map" class="" style="height:100%;"></div>
 	</div>
-	<script type="juicer/javascript" id="pos-tpl">
-		{@each list as obj, index}
-			<span class="pos" style="${obj.pos}" data-sid="${obj.sid}"></span>
-		{@/each}
-	</script>
-	<script type="text/javascript" src='js/map.js'></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=vQNwv18ZRLKmZIRiirNegCW6T9692WaK"></script>
+	<script type="text/javascript" src='js/bd-map.js'></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			moka.map.init();
+			moka.bdmap.init();
 		});
 	</script>
 </body>
