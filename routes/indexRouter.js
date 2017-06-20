@@ -9,7 +9,6 @@ var router = express.Router();
 
 var murl = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx6c194f81cd892341&redirect_uri=http%3a%2f%2fwww.viscloud.cn%2fdpcb%2flogin&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
 
-
 var login = function (req, res, callback) {
     var code = req.query.code;
     if(req.session && req.session.user){
@@ -61,7 +60,6 @@ var login = function (req, res, callback) {
         });
     }
 };
-
 
 router.get('/login', function(req, res, next) {
 	console.log(req.session.user);

@@ -76,7 +76,10 @@ var util = {
 		$loadingPanel.hide();
 		$loadingPanel.find('.weui_toast_content').text('数据加载中');
 	},
-	showMsg : function(msg){
+	showMsg : function(msg, msgCallback){
+		if(msgCallback){
+			util.msgCallback = msgCallback;
+		}
 		var $msgDlg = $('#msg_dlg');
 		if($msgDlg.length == 0){
 			$('body').append(util.msgTpl);
@@ -95,6 +98,10 @@ var util = {
 		}
 		$msgDlg.hide();
 		$msgDlg.find('.weui-dialog__bd').text('');
+		if(util.msgCallback){
+			util.msgCallback();
+			util.msgCallback = null;
+		}
 	},
 	toast : function(msg){
 		var $toast = $('#toast');

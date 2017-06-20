@@ -54,7 +54,9 @@
         dataType : 'json',
         success : function(result){
           if(result.ret_code == 0){
-            return util.showMsg('提交成功');
+            return util.showMsg('提交成功', function(){
+              window.location.href = 'user';
+            });
           }
           return util.showMsg('提交失败');
         },
