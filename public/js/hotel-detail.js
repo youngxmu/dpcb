@@ -12,6 +12,11 @@
       $('#wrapper').on('touchstart', function(e){
         //e.preventDefault();
       });
+
+      $('#wrapper').on('click', '.address', function(e){
+        var address = $(this).text();
+        window.location.href = 's/bdmap?address=' + address;
+      });
 		},
     loadData : function(){
       $.ajax({

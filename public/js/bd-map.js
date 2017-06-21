@@ -5,7 +5,8 @@
 		init : function(){
 			_this.initEvent();
 			_this.initData();
-			_this.initMap('黄冈市东坡赤壁');
+			_this.address = $('#address').val();
+			_this.initMap(_this.address);
 		},
 		initEvent : function(){
 			$('#wrapper').on('touchstart', function(e){
@@ -41,12 +42,18 @@
 			var city = '黄冈';
 			var area = '黄州';
 			_this.map = new BMap.Map("map");  // 创建Map实例
-			_this.map.centerAndZoom(city,16);	  // 初始化地图,用城市名设置地图中心点
+			_this.map.centerAndZoom(city,18);	  // 初始化地图,用城市名设置地图中心点
 			_this.map.enableScrollWheelZoom();   //启用滚轮放大缩小，默认禁用
 			_this.map.enableContinuousZoom();	//启用地图惯性拖拽，默认禁用
-			_this.map.addEventListener("click", _this.getAttr);
+			// _this.map.addEventListener("click", _this.getAttr);
 
 			setTimeout(function(){
+
+				// var local = new BMap.LocalSearch(_this.map, {
+				// 	renderOptions:{map: _this.map}
+				// });
+				// local.search(address);
+
 				_this.gc.getPoint(address, function(point){
 					if (point) {
 						_this.map.centerAndZoom(point, 16);

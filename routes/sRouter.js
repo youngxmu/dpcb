@@ -5,7 +5,8 @@ var logger = require("../lib/log").logger("sRouter");
 var router = express.Router();
 
 router.get('/bdmap', function(req, res, next) {
-    return res.render('bd-map');
+	var address = req.query.address;
+    return res.render('bd-map', {address : address});
 });
 
 

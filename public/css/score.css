@@ -31,7 +31,7 @@
 }
 
 .nav-panel li{
-	width: 50%;
+	width: 33%;
 	height: 100%;
 	text-align: center;
 	display: inline-block;
@@ -116,4 +116,11 @@
 
 .recd-list{display: none;}
 
-/*FF9C44*/
+.rule-list{padding: 0.2rem;
+	
+}
+
+.rule-list p{
+	line-height: 1.5;
+	font-size: 0.26rem;
+}

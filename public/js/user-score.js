@@ -6,6 +6,8 @@
       _this.cid = $('#cid').val();
       _this.tpl.prodListTpl = juicer($('#prod_list_tpl').html());
       _this.tpl.recdListTpl = juicer($('#recd_list_tpl').html());
+      _this.tpl.ruleListTpl = juicer($('#rule_list_tpl').html());
+      
 			_this.initEvent();
       _this.loadData();
       _this.loadProd();
@@ -25,13 +27,19 @@
         if(_this.kind == 1){
           $('#prod_list').show();
           $('#recd_list').hide();
+          $('#rule_list').hide();
           _this.loadProd();
-        }else{
+        }else if(_this.kind == 2){
           $('#prod_list').hide();
           $('#recd_list').show();
+          $('#rule_list').hide();
           _this.loadRecd();
+        }else{
+          $('#prod_list').hide();
+          $('#recd_list').hide();
+          $('#rule_list').show();
+          _this.loadRule();
         }
-        
       });
 		},
     loadData : function(){
@@ -41,7 +49,7 @@
         data : {cid:_this.cid},
         dataType : 'json',
         success : function(result){
-          if(result.ret_code){
+          if(result.ret_code == 0){
             var score = 0;
             if(result.value){
               score = result.value;
@@ -89,6 +97,26 @@
         error : function(){
         }
       });
-    }
+    },
+    loadRule : function(){
+      $.ajax({
+        url : ctx + 'r/prule',
+        type : 'get',
+        dataType : 'json',
+        success : function(result){
+          if(result.ret_code == 0){
+            var list = [];
+            for(var index in result.value){
+              var rule = result.value[index];
+              list.push(rule);
+            }
+            var html = _this.tpl.ruleListTpl.render({list: list});
+            $('#rule_list').html(html);
+          }
+        },
+        error : function(){
+        }
+      });
+    },
   }
 }(moka));
