@@ -5,7 +5,7 @@
 	<title>关于我们</title>
 	<style type="text/css">
 		.about-container{margin-top: 0.2rem;background-color: #ffffff;}
-		.about-container dl{
+		.about-container dl, .about-container p{
 			height: 1rem;
 			line-height: 1rem;
 			border-bottom: 0.01rem solid #cccccc;
@@ -19,11 +19,27 @@
 <body>
 	<div id="wrapper" class="container">
 		<div class="about-container">
-			<dl>联系方式：75205152</dl>
+			<!-- <dl>联系方式：75205152</dl>
 			<dl>官方网站：www.huanggang.com</dl>
 			<dl>微信公众号：huanggang123</dl>
-			<dl>黄冈市旅游质监局</dl>
+			<dl>黄冈市旅游质监局</dl> -->
 		</div>
 	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$.ajax({
+				url : ctx + 'r/about',
+				type : 'post',
+				dataType : 'json',
+				success : function(result){
+					if(result.ret_code){
+						$('.about-container').html(result.value);
+					}
+				},
+				error : function(){
+				}
+			});
+		});
+	</script>
 </body>
 </html>
