@@ -123,7 +123,7 @@
 	background-size: 0.33rem 0.32rem;
 	background-repeat: no-repeat;
 	position: absolute;
-	right: 0.9rem;
+	right: 0;
 	top: 0;
 }
 
@@ -132,6 +132,7 @@
 }
 
 .info-list li .other .btn-share{
+	display: none;
 	width: 0.4rem;
 	height: 0.4rem;
 	background-image: url('../img/share.png');
@@ -166,7 +167,7 @@
 	background-size: 0.33rem 0.32rem;
 	background-repeat: no-repeat;
 	position: absolute;
-	right: 0.9rem;
+	right: 0.2rem;
 	top: 0.2rem;
 }
 
@@ -175,6 +176,7 @@
 }
 
 .info-detail .text .name .btn-share{
+	display: none;
 	width: 0.4rem;
 	height: 0.4rem;
 	background-image: url('../img/share.png');

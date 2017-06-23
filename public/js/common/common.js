@@ -50,6 +50,27 @@ var util = {
 		}
 		return html;
 	},
+	share : function(cid, id, kind, callback){
+		$.ajax({
+			url : ctx + 'r/share',
+			type : 'post',
+			dataType : 'json',
+			data : {
+				cid : cid,
+				id : id,
+				kind : kind
+			},
+			success : function(result){
+				if(result.ret_code == 0){
+					return callback(null);
+				}
+				callback('收藏失败');
+			},
+			error : function(){
+				callback('网络异常');
+			}
+		});
+	},
 	formatIndex : function(index){
 		return parseInt(index, 10) + 1;
 	},
@@ -123,8 +144,6 @@ var util = {
 		},10);
 		
 	},
-	
-
 	date : {
 		getDate : function(dateStr){
 			if(!dateStr){

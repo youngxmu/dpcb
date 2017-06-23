@@ -11,7 +11,8 @@ router.get('/list', function(req, res, next) {
 
 router.get('/detail/:id', function(req, res, next) {
 	var id = req.params.id;
-    return res.render('main/hotel-detail', {id: id});
+	var user = req.session.user;
+    return res.render('main/hotel-detail', {id: id, cid: user.cid});
 });
 
 module.exports = router;

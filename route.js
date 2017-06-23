@@ -8,9 +8,10 @@ var hotelRouter = require('./routes/hotelRouter.js');
 var infoRouter = require('./routes/infoRouter.js');
 var userRouter = require('./routes/userRouter.js');
 var sRouter = require('./routes/sRouter.js');
-
+var signatureRouter = require('./routes/signatureRouter.js');
 module.exports = function (app) {
 	app.use('', indexRouter);
+    app.use('/signature', signatureRouter);
 	app.use('/s', sRouter);
     app.use('/ticket', ticketRouter);
 	app.use('/info', infoRouter);
