@@ -53,12 +53,14 @@
         // data : data,
         dataType : 'json',
         success : function(result){
+          console.log(result);
           if(result.ret_code == 0){
             return util.showMsg('提交成功', function(){
               window.location.href = 'user';
             });
+          }else{
+            return util.showMsg(result.ret_msg);  
           }
-          return util.showMsg('提交失败');
         },
         error : function(){
           return util.showMsg('提交失败');
