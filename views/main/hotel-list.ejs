@@ -25,7 +25,7 @@
 				<div class="name">${obj.title}</div>
 				<div class="line" {@if obj.kind > 2}style="opacity:0;"{@/if}>
 					<span class="tel">电话：${obj.phone}</span>
-					<span class="price">起价：<em class="red-hlight">￥${obj.price}/位</em></span>
+					<span class="price">{@if obj.kind == 1}人均{@/if}{@if obj.kind == 2}起价{@/if}：<em class="red-hlight">￥${obj.price}/位</em></span>
 				</div>
 				<div class="line">
 					<span class="address">地址：${obj.address}</span>

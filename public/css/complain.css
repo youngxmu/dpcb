@@ -79,3 +79,8 @@
 	border-radius: 0.06rem;
 	text-align: center;
 }
+
+
+.code-line .btn-code.send{
+	background-color: #cccccc;
+}

@@ -20,10 +20,10 @@
         var iid = share.iid;
         var kind = share.kid;
         if(kind == 1){
-
+          window.location.href = 'spot/detail/' + iid;  
         }
         if(kind == 2){
-          
+          window.location.href = 'hotel/detail/' + iid;  
         }
         if(kind == 3){
           window.location.href = 'info/detail/' + iid;  

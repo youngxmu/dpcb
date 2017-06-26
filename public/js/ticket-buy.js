@@ -130,20 +130,26 @@
 
 
 var fetching = false;
-var timer = 60;
+var timer = 180;
 $('#wrapper').on('click', '.btn-code', function(){
   if(fetching){
     return;
   }
   var $this = $(this);
+  $this.addClass('send');
   var phone = $('#phone').val();
   if(!phone){
     return util.showMsg('请输入手机号！');
   }
 
+  if(!valid.tel(phone)){
+    return util.showMsg('请输入正确的手机号！');
+  }
+
   var counter = setInterval(function(){
     if(timer <= 0){
       $this.text('获取验证码');
+      $this.removeClass('send');
       return clearInterval(counter);
     }
     timer--;
@@ -156,10 +162,16 @@ $('#wrapper').on('click', '.btn-code', function(){
     url : ctx + 'r/mcode',
     type : 'post',
     data : {
-      phone : phone
+      phone : phone,
+      kind : 2
     },
+    dataType : 'json',
     success : function(result){
-      util.showMsg('验证码已发送！');
+      if(result.ret_code == 0){
+        util.showMsg('验证码已发送，180s内有效！');
+      }else{
+        util.showMsg('验证已发送失败，请重试');  
+      }
     },
     error : function(){
       util.showMsg('验证已发送失败，请重试');
