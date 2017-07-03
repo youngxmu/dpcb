@@ -40,11 +40,6 @@
           cid : _this.cid
         },
         success : function(result){
-          if(result.success){
-            var html = _this.tpl.favListTpl.render(result);
-            $('#fav_list').html(html);
-          }
-
           if(result.ret_code == 0){
             var list = [];
             for(var index in result.value){

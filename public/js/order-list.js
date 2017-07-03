@@ -2,6 +2,7 @@
 	var _this = null;
 	_this = P.order.list = {
     tpl : {},
+    orderMap : {},
     status : 0,
 		init : function(){
       _this.cid = $('#cid').val();
@@ -34,9 +35,19 @@
         data : {
           cid : _this.cid
         },
+        dataType : 'json',
         success : function(result){
-          if(result.success){
-            var html = _this.tpl.orderListTpl.render(result);
+          if(result.ret_code == 0){
+            var list = [];
+            for(var index in result.value){
+              var order = result.value[index];
+              console.log(order.used +' ' + _this.status);
+              if(order.used == _this.status){
+                list.push(order);
+                _this.orderMap[order.id] = order;
+              }
+            }
+            var html = _this.tpl.orderListTpl.render({list: list});
             $('#order_list').html(html);
           }
         },

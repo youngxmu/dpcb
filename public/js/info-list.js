@@ -37,18 +37,6 @@
         type : 'post',
         dataType : 'json',
         success : function(result){
-          if(result.success){
-            var list = [];
-            for(var index in result.list){
-              var info = result.list[index];
-              console.log(info.kind + "  " + _this.kind);
-              if(info.kind == _this.kind){
-                list.push(info);
-              }
-            }
-            var html = _this.tpl.infoListTpl.render({list: list});
-            $('#info_list').html(html);
-          }
           if(result.ret_code == 0){
             var list = [];
             for(var index in result.value){

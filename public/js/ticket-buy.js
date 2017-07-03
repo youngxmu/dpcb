@@ -6,8 +6,11 @@
       _this.cid = $('#cid').val();
       _this.tid = $('#tid').val();
 			_this.tpl.ticketTpl = juicer($('#ticket_tpl').html());
+      _this.tpl.orderTpl = juicer($('#order_tpl').html());
 			_this.initEvent();
       _this.loadData();
+
+      _this.showConfirm();
 		},
 		initEvent : function(){
       // $('#wrapper').on('touchstart', function(e){
@@ -79,22 +82,43 @@
         data : data,
         dataType : 'json',
         success : function(result){
-          if(result.ret_code){
-            WeixinJSBridge.invoke(
-               'getBrandWCPayRequest', {
-                   "appId": result.value.appid,     //公众号名称，由商户传入     
-                   "timeStamp": result.value.timestamp,         //时间戳，自1970年以来的秒数     
-                   "nonceStr":result.value.noncestr, //随机串     
-                   "package":"prepay_id=" + result.value.prepayid,
-                   "signType":"MD5",         //微信签名方式：     
-                   "paySign": result.value.sign //微信签名 
-               },
-               function(res){     
-                   if(res.err_msg == "get_brand_wcpay_request:ok" ) {
-                    console.log(1);
-                   }     // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。 
-               }
-           ); 
+          if(result.ret_code == 0){
+            var oid = result.value.orderno;
+
+            $.ajax({
+              url : ctx + 'r/bticket',
+              type : 'post',
+              data : {oid: oid},
+              dataType : 'json',
+              success : function(result){
+                if(result.ret_code == 0){
+                 util.showMsg('支付成功', function(){
+                  window.location.href = 'user/order'; 
+                 });
+                }
+              },
+              error : function(){
+              },
+              complete : function(){
+                _this.commiting = false;
+              }
+            });
+
+           //  WeixinJSBridge.invoke(
+           //     'getBrandWCPayRequest', {
+           //         "appId": result.value.appid,     //公众号名称，由商户传入     
+           //         "timeStamp": result.value.timestamp,         //时间戳，自1970年以来的秒数     
+           //         "nonceStr":result.value.noncestr, //随机串     
+           //         "package":"prepay_id=" + result.value.prepayid,
+           //         "signType":"MD5",         //微信签名方式：     
+           //         "paySign": result.value.sign //微信签名 
+           //     },
+           //     function(res){     
+           //         if(res.err_msg == "get_brand_wcpay_request:ok" ) {
+           //          console.log(1);
+           //         }     // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。 
+           //     }
+           // ); 
           }
         },
         error : function(){
@@ -104,7 +128,29 @@
         }
       });
     },
+    showConfirm : function(){
+      $('.order-detail').hide();
+      var data = {
+        buytime:"2017-07-03 16:56:07",
+        cid:"oAz3H05Hvj-Cvc9440usD3k9iqyw",
+        cname:"123",
+        id:"881798698206760960",
+        num:1,
+        phone:"18995603859",
+        price:0.01,
+        spics:"/images/Lighthouse.jpg",
+        state:0,
+        tid:"872751047163252736",
+        tname:"东坡赤壁门票",
+        total:0.01,
+        ttime:"2017-06-19",
+        useNum:0,
+        used:0
+      };
 
+      var html = _this.tpl.orderTpl.render(data);
+      $('#order_confirm').html(html);
+    },
     dec : function(){
       var $num = $('#num');
       var num = $num.val();

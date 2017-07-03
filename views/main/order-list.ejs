@@ -19,12 +19,10 @@
 	<script type="text/juicer" id="order_list_tpl">
 		{@each list as obj, index}
 		<li data-id="${obj.id}">
-			<span class="pic">
-				<img src="${obj.spic}">
-			</span>
-			<div class="name">${obj.name}</div>
-			<div class="price">总价：${obj.amount}</div>
-			<div class="date-time">${obj.create_time}</div>
+			<span class="pic">$${obj.spics|getPic}</span>
+			<div class="name">${obj.tname}</div>
+			<div class="price">总价：${obj.total}</div>
+			<div class="date-time">${obj.ttime}</div>
 			<span class="more">查看</span>
 		</li>
 		{@/each}

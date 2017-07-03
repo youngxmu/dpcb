@@ -34,17 +34,6 @@
         type : 'post',
         dataType : 'json',
         success : function(result){
-          if(result.success){
-            var list = [];
-            for(var index in result.list){
-              var hotel = result.list[index];
-              if(hotel.kind == _this.kind){
-                list.push(hotel);
-              }
-            }
-            var html = _this.tpl.hotelListTpl.render({list: list});
-            $('#hotel_list').html(html);
-          }
           if(result.ret_code == 0){
             var list = [];
             for(var index in result.value){
