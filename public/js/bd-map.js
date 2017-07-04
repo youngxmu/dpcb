@@ -42,9 +42,9 @@
 			});
 		},
 		initMap : function(address){
-			// var city = '黄冈';
-			// var area = '黄州';
-			var city = '武汉';
+			var city = '黄冈';
+			var area = '黄州';
+			// var city = '武汉';
 			
 			_this.map = new BMap.Map("map");  // 创建Map实例
 			_this.map.centerAndZoom(city,18);	  // 初始化地图,用城市名设置地图中心点
@@ -79,6 +79,10 @@
 			// 	// 	driving.search("武汉市光谷广场", address);
 			// },800);
 
+			if(address.indexOf('黄冈') == -1){
+				address = '黄冈市' + address;
+			}
+
 			setTimeout(function(){
 				var geolocation = new BMap.Geolocation();
 				geolocation.getCurrentPosition(function(r){
@@ -105,13 +109,6 @@
 						alert('failed'+this.getStatus());
 					}        
 				},{enableHighAccuracy: true})
-				
-
-				
-
-
-
-				
 			},800);
 			
 		}
