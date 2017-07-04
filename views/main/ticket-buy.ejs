@@ -17,7 +17,7 @@
 				<dl>
 					<dt>使用日期</dt>
 					<dd class="time-box">
-						<input id="show_date" name="sdate" class="show-date" palceholder="请选择使用日期" value="2017-01-01">
+						<input id="show_date" name="sdate" class="show-date" palceholder="请选择使用日期" >
 						<input id="hide_date" class="hide-date" type="date">
 						<span class="more"></span>
 					</dd>
@@ -44,7 +44,7 @@
 				</dl>
 				<dl class="input-line">
 					<label>手机号</label>
-					<input id="phone" name="phone" placeholder="请输入注册手机号">
+					<input id="phone" name="phone" type="number" placeholder="请输入注册手机号">
 				</dl>
 				<dl class="input-line code-line">
 					<label>验证码</label>
@@ -67,11 +67,10 @@
 		<div class="prod-info">
 			<span class="pic">$${spics|getPic}</span>
 			<div class="name">${tname}</div>
-			<div class="count">X${num}</div>
-			<div class="price">总价：￥${total}</div>
-			<span class="single-price">￥${price}</span>
+			<div class="count"><em class="red-hlight">X${num}</em></div>
+			<div class="price">总价：<em class="red-hlight">￥${total}</em></div>
+			<span class="single-price"><em class="red-hlight">￥${price}</em></span>
 			<span class="create-time">${buytime}</span>
-			
 		</div>
 		<div class="order-info">
 			<dl>
@@ -87,8 +86,11 @@
 				<dd>${id}</dd>
 			</dl>
 		</div>
-		<div class="pay-type wx">微信支付</div>
-		<div class="btn-commit">提交订单</div>
+		<div class="pay-type-box">
+			<div class="pay-type-title">选择支付方式</div>
+			<div class="pay-type wx active">微信支付<span class="sel"></span></div>
+		</div>
+		<div class="btn-pay">确认支付</div>
 	</script>
 	<script type="text/javascript" src='js/ticket-buy.js'></script>
 	<script type="text/javascript">

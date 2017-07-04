@@ -59,6 +59,10 @@
 	border-bottom: 0.01rem solid #cccccc;
 }
 
+.order-list li:last-child{
+	border: 0;
+}
+
 .order-list li .pic{
 	width: 1.4rem;
 	height: 1.4rem;
@@ -133,7 +137,6 @@
 	padding: 0.2rem 0.2rem 0.2rem 1.8rem;
 	position: relative;
 	background-color: #ffffff;
-	border-bottom: 0.01rem solid #cccccc;
 }
 
 .order-detail .prod-info .pic{
@@ -205,7 +208,7 @@
 	line-height: 0.6rem;
 	height: 0.6rem;
 	text-align: left;
-	font-size: 0.28rem;
+	font-size: 0.26rem;
 	background-color: #f6f6f6;
 	display: block;
 	vertical-align: top;
@@ -214,10 +217,12 @@
 .order-detail .order-info dl{
 	vertical-align: top;
 	display: block;
-	font-size: 0.3rem;
+	font-size: 0.24rem;
 	line-height: 0.6rem;
 	height: 0.6rem;
-	
 	margin: 0 0.2rem;
-	border-bottom: 0.01rem dashed #cccccc;
+}
+
+.order-detail .order-info dl span{
+	color: #a3a3a3;
 }

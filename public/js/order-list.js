@@ -41,7 +41,6 @@
             var list = [];
             for(var index in result.value){
               var order = result.value[index];
-              console.log(order.used +' ' + _this.status);
               if(order.used == _this.status){
                 list.push(order);
                 _this.orderMap[order.id] = order;

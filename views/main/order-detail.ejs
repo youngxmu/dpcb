@@ -14,19 +14,17 @@
 
 	<script type="text/juicer" id="order_tpl">
 		<div class="prod-info">
-			<span class="pic">
-				<div class="pic">$${spic|getPics}</div>
-			</span>
+			<div class="pic">$${spics|getPic}</div>
 			<div class="name">${tname}</div>
-			<div class="count">X${tname}</div>
-			<div class="price">总价：￥${tname}</div>
-			<span class="single-price">￥${tname}</span>
+			<div class="count "><em class="red-hlight">X${num}</em></div>
+			<div class="price">总价：<em class="red-hlight">￥${total}</em></div>
+			<span class="single-price"><em class="red-hlight">￥${price}</em></span>
 		</div>
 		<div class="order-info">
 			<label>订单信息</label>
-			<dl><span>订单号：</span>${tid}</dl>
-			<dl><span>订单时间：</span>${ttime}</dl>
-			<dl><span>使用时间：</span>${ttime}</dl>
+			<dl><span>订单号：</span>${id}</dl>
+			<dl><span>订单时间：</span>${buytime}</dl>
+			<dl><span>使用时间：</span>${ttime}&nbsp;08:00-18:00</dl>
 		</div>
 	</script>
 

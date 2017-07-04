@@ -46,6 +46,7 @@
 	width: 1.2rem;
 	color: #FF9123;
 	font-size: 0.24rem;
+	text-align: right;
 }
 
 .order-confirm .prod-info .create-time{
@@ -121,10 +122,42 @@
 	height: 100%;
 }
 
+.pay-type-box{}
+.pay-type-box .pay-type-title{height: 0.6rem;line-height:0.6rem;background-color: #f6f6f6;text-align: left;padding: 0 0.2rem;}
+.pay-type-box .pay-type{
+	height: 1rem;
+	line-height: 1rem;
+	padding: 0 .8rem 0 1.2rem;
+	background-position: 0.2rem center;
+	background-repeat: no-repeat;
+	background-size: 0.6rem 0.6rem;
+	background-color: #ffffff;
+	position: relative;
+}
+
+.pay-type-box .pay-type.wx{
+	background-image: url("../img/order/wx.png");
+}
+
+.pay-type-box .pay-type .sel{
+	height: 100%;
+	width: 0.8rem;
+	position: absolute;
+	right: 0;
+	top: 0;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-color: #ffffff;
+	background-image: url("../img/order/unsel.png");
+	background-size: 0.4rem 0.4rem;
+}
+
+.pay-type-box .pay-type.active .sel{
+	background-image: url("../img/order/sel.png");
+}
 
 
-
-.order-confirm .btn-commit{
+.order-confirm .btn-pay{
 	background-color: #01CFDC;
 	line-height: 0.8rem;
 	color: #ffffff;
@@ -135,3 +168,5 @@
 	margin: auto;
 	margin-top: 0.5rem;
 }
+
+<div class="pay-type wx">微信支付</div>

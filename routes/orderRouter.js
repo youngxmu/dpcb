@@ -13,14 +13,14 @@ router.get('/detail/:oid', function(req, res, next) {
 });
 
 
-router.get('/confirm/:oid', function(req, res, next) {
-	var oid = req.params.oid;
-	var cid = req.session.user.cid;
-	return res.render('main/order-confirm', {
-		oid:oid,
-		cid:cid
-	});
-});
+// router.get('/confirm/:oid', function(req, res, next) {
+// 	var oid = req.params.oid;
+// 	var cid = req.session.user.cid;
+// 	return res.render('main/order-confirm', {
+// 		oid:oid,
+// 		cid:cid
+// 	});
+// });
 
 module.exports = router;
 

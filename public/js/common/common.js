@@ -151,6 +151,29 @@ var util = {
 			}
 			return dateStr.split(' ')[0];
 		},
+		currDate : function(){
+			var date = util.date.shortDate(new Date());
+			date = new Date(date + ' 00:00:00');
+			return date;
+		},
+		shortDate : function(longTime){
+			var date = new Date(longTime);
+
+			var Year= date.getFullYear();//ie火狐下都可以 
+			var Month= date.getMonth()+1; 
+			var Day = date.getDate(); 
+
+			if (Month < 10 ) { 
+				Month = "0" + Month; 
+			} 
+			if (Day < 10 ) { 
+				Day = "0" + Day; 
+			}
+
+			var CurrentDate = Year + '-' + Month + '-' + Day;
+
+			return CurrentDate;
+		},
 		format : function(longTime){
 			var date = new Date(longTime);
 
