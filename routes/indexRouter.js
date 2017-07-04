@@ -61,71 +61,70 @@ var login = function (req, res, callback) {
     }
 };
 
-// router.get('/login', function(req, res, next) {
-// 	console.log(req.session.user);
-// 	if(req.session.user){
-// 		if(req.session.path){
-// 			return res.redirect(req.session.path);
-// 		}
-// 		return res.redirect(config.redirectPath + 'user');
-// 	}else{
-// 		login(req, res, function(err, user){
-// 	        if(err || !user ){
-// 	        	console.log(murl);
-// 	            return res.redirect(murl);
-// 	        }
-// 	        console.log('logined  ' + req.session.path);
-// 	        console.log(user);
-// 	        return res.redirect(req.session.path);
-// 	    });
-// 	}
-// });
-
-
 router.get('/login', function(req, res, next) {
-	var openid = 'oAz3H05Hvj-Cvc9440usD3k9iqyw';
-	var nickname = 'young';
-	var avatar = 'http://wx.qlogo.cn/mmopen/1TKMRBgMD6d5fR0wbhe5QGhicQRCowJq7GldgtuPfKPoLN02fUFOPnIoEYPkSzoicAHViaKy4TABKsBvGWiciaBSgqb4Dfeyzbgce/0';
-	// req.session.user = {
-	// 	cid : openid,
-	// 	sname : nickname,
-	// 	avatar : avatar
-	// }
-	// return res.redirect(req.session.path);   
 	if(req.session.user){
 		if(req.session.path){
 			return res.redirect(req.session.path);
 		}
-		return res.render('login');
+		return res.redirect(config.redirectPath + 'user');
 	}else{
-		var options = {
-	        uri: 'http://123.206.194.194:8080/dpcb/r/login?cid='+ openid + '&sname=' + nickname,
-	        method: 'POST',
-	        body: {
-		        cid : openid,
-        		sname : nickname
-		    },
-	        // headers: {
-	        //     'User-Agent': 'Request-Promise'
-	        // },
-	        json: true // Automatically parses the JSON string in the response
-	    };
-	    rp(options).then(function (repos) {
-	    	console.log('login');
-	        if(repos.ret_code == 0){
-	        	req.session.user = {
-	        		cid : openid,
-	        		sname : nickname,
-	        		avatar : avatar
-	        	}
-	     		return res.redirect(req.session.path);   	
+		login(req, res, function(err, user){
+	        if(err || !user ){
+	        	console.log(murl);
+	            return res.redirect(murl);
 	        }
-	    }).catch(function (err) {
-	    	console.log(err);
-	        return res.render('login');
+	        console.log('logined  ' + req.session.path);
+	        console.log(user);
+	        return res.redirect(req.session.path);
 	    });
 	}
 });
+
+
+// router.get('/login', function(req, res, next) {
+// 	var openid = 'oAz3H05Hvj-Cvc9440usD3k9iqyw';
+// 	var nickname = 'young';
+// 	var avatar = 'http://wx.qlogo.cn/mmopen/1TKMRBgMD6d5fR0wbhe5QGhicQRCowJq7GldgtuPfKPoLN02fUFOPnIoEYPkSzoicAHViaKy4TABKsBvGWiciaBSgqb4Dfeyzbgce/0';
+// 	// req.session.user = {
+// 	// 	cid : openid,
+// 	// 	sname : nickname,
+// 	// 	avatar : avatar
+// 	// }
+// 	// return res.redirect(req.session.path);   
+// 	if(req.session.user){
+// 		if(req.session.path){
+// 			return res.redirect(req.session.path);
+// 		}
+// 		return res.render('login');
+// 	}else{
+// 		var options = {
+// 	        uri: 'http://123.206.194.194:8080/dpcb/r/login?cid='+ openid + '&sname=' + nickname,
+// 	        method: 'POST',
+// 	        body: {
+// 		        cid : openid,
+//         		sname : nickname
+// 		    },
+// 	        // headers: {
+// 	        //     'User-Agent': 'Request-Promise'
+// 	        // },
+// 	        json: true // Automatically parses the JSON string in the response
+// 	    };
+// 	    rp(options).then(function (repos) {
+// 	    	console.log('login');
+// 	        if(repos.ret_code == 0){
+// 	        	req.session.user = {
+// 	        		cid : openid,
+// 	        		sname : nickname,
+// 	        		avatar : avatar
+// 	        	}
+// 	     		return res.redirect(req.session.path);   	
+// 	        }
+// 	    }).catch(function (err) {
+// 	    	console.log(err);
+// 	        return res.render('login');
+// 	    });
+// 	}
+// });
 
 router.get('/register', function(req, res, next) {
     return res.render('register');

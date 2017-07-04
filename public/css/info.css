@@ -168,7 +168,7 @@
 	background-repeat: no-repeat;
 	position: absolute;
 	right: 0.2rem;
-	top: 0.2rem;
+	bottom: 0.2rem;
 }
 
 .info-detail .text .name .btn-fav.active{

@@ -12,15 +12,5 @@ router.get('/detail/:oid', function(req, res, next) {
 	return res.render('main/order-detail', {cid:cid,oid:oid});
 });
 
-
-// router.get('/confirm/:oid', function(req, res, next) {
-// 	var oid = req.params.oid;
-// 	var cid = req.session.user.cid;
-// 	return res.render('main/order-confirm', {
-// 		oid:oid,
-// 		cid:cid
-// 	});
-// });
-
 module.exports = router;
 

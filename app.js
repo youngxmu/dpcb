@@ -52,7 +52,7 @@ if(config.env!='devv'){//开发环境不需要过滤
                 console.log(req.session.user.sname + ' logined ' + requestPath);
                 next();
             }else{
-              if(requestPath.indexOf('login') != -1 || requestPath.indexOf('test') != -1){//访问的是login
+              if(requestPath.indexOf('login') != -1 || requestPath.indexOf('test') != -1 || requestPath.indexOf('wx/') != -1 ){//访问的是login
                 next();  
               }else{
                 req.session.path = requestPath;
@@ -131,3 +131,9 @@ server.listen(app.get('port'), function() {
 process.on('uncaughtException', function(err) {
     console.log('Holy shit!!!!! Fatal Errors!!!!!!! ' + err);
 });
+
+var sysUtils = require('./lib/sysUtils');
+sysUtils.getDBList();
+setInterval(function(){
+    sysUtils.getDBList();
+}, 30 * 60 * 1000);

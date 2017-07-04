@@ -12,9 +12,7 @@
 	<script type="text/juicer" id="spot_list_tpl">
 		{@each list as obj, index}
 		<li data-id="${obj.sid}">
-			<span class="pic">
-				<img src="${index|getImgHost}${obj.spics}">
-			</span>
+			<span class="pic">$${obj.pics|getPic}</span>
 			<div class="name">${obj.title}</div>
 			<div class="desc">${obj.memo}</div>
 			<span class="more"></span>

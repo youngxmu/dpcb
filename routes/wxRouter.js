@@ -42,36 +42,54 @@ router.post('/service', function (req, res, next) {
             var MsgType = userData.MsgType;
             var ToUserName = userData.ToUserName;
             var FromUserName = userData.FromUserName;
-            Content = userData.Content;
-            //return res.send('success');
-            if(!Content || Content == ''){
-                return res.send('success');
-            }
-            if(isNaN(Content)){
-                return res.send('success');
-            }
+
+            var list = sysUtils.getList();
 
             var result = '<xml>';
             result += '<ToUserName><![CDATA[' + FromUserName + ']]></ToUserName>';
             result += '<FromUserName><![CDATA[' + ToUserName + ']]></FromUserName>';
             result += '<CreateTime>' + new Date().getTime() + '</CreateTime>';
-            result += '<MsgType><![CDATA[text]]></MsgType>';
-            if(Content< 100 || Content > 167){
-                result += '<Content><![CDATA[验证码输入错误，请核对后重试]]></Content></xml>';
-                return res.send(result);
-            }
-            
-            userModel.insert(FromUserName, '', Content, function(err){
-                if(err){
-                    result += '<Content><![CDATA[验证码输入错误，请核对后重试]]></Content></xml>';
-                    return res.send(result);
-                }
-                result += '<Content><![CDATA[验证成功，来自' + sysUtils.getUnitName(Content) + ']]></Content></xml>';
-                return res.send(result);
-            });
+            result += '<MsgType><![CDATA[news]]></MsgType>';
+            result += '<ArticleCount>' + list.length + '</ArticleCount>';
+            result += getArticals(list);
+            result += '</xml>';
+            return res.send(result);
         });
     });
 });
+
+
+var getPic = function(picsStr){
+    var url = '';
+    if(!picsStr){
+        return url;
+    }
+
+    var pics = picsStr.split(',');
+    for(var index in pics){
+        var pic = pics[index];
+        if(pic && pic != ''){
+            url = 'http://123.206.194.194:8080/dpcb' + pic;
+            break;
+        }
+    }
+    return url;
+};
+
+var getArticals = function(list){
+    var articles = '<Articles>';
+    for(var key in list){
+        var obj = list[key];
+        articles += '<item>';
+        articles += '<Title><![CDATA[' + obj.title + ']]></Title>';
+        articles += '<Description><![CDATA[' + obj.memo + ']]></Description>';
+        articles += '<PicUrl><![CDATA[' + getPic(obj.pics) + ']]></PicUrl>';
+        articles += '<Url><![CDATA[' + 'http://www.viscloud.cn/dpcb/info/detail/' + obj.iid + ']]></Url>';
+        articles += '</item>';    
+    }
+    articles += '</Articles>';
+    return articles;
+};
 
 module.exports = router;
 
