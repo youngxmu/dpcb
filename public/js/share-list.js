@@ -28,7 +28,12 @@
         if(kind == 3){
           window.location.href = 'info/detail/' + iid;  
         }
-        
+        if(kind == 4){
+          window.location.href = 'goods/detail/' + iid;  
+        }
+        if(kind == 5){
+          window.location.href = 'guide/detail/' + iid;  
+        }
       });
     },
     loadData : function(){

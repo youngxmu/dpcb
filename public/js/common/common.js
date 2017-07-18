@@ -7,6 +7,8 @@ var moka = {
 	hotel : {},
 	user : {},
 	ticket : {},
+	guide : {},
+	good : {},
 	order : {}
 };
 

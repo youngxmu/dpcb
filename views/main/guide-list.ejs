@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<%- include ../common/meta.ejs %>
+	<title>导游预定</title>
+	<link rel="stylesheet" type="text/css" href="css/guide.css">
+</head>
+<body>
+	<div id="wrapper" class="container">
+		<div class="list-panel">
+			<ul id="guide_list" class="guide-list"></ul>	
+		</div>
+	</div>
+	<script type="text/juicer" id="guide_list_tpl">
+		{@each list as obj, index}
+		<li data-id="${obj.gid}">
+			<div class="guide-info">
+				<span class="pic">$${obj.spics|getPics}</span>
+				<div class="name">${obj.name}</div>
+				<div class="line" {@if obj.kind > 2}style="opacity:0;"{@/if}>
+					<span class="tel">编号：${obj.no}</span>
+					<span class="price">价格：<em class="red-hlight">￥${obj.price}/时</em></span>
+				</di
+				<div class="line">
+					<span class="address">电话：${obj.phone}</span>
+				</div>
+			</div>
+			<div class="memo" style="">${obj.content}</div>
+		</li>
+		{@/each}
+	</script>
+	<script type="text/javascript" src='js/guide-list.js'></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			moka.guide.list.init();
+		});
+	</script>
+</body>
+</html>

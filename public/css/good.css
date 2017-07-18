@@ -1,0 +1,147 @@
+.container{
+	height: 100%;
+}
+.list-panel{
+	position: relative;
+	height: 100%;
+}
+
+
+.good-list{
+	padding: 0.2rem;
+	background-color: #ffffff;
+	height: 100%;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch
+}
+
+.good-list li{
+	margin-bottom: 0.3rem;
+}
+
+.good-list li .pic{
+	width: 100%;
+	height: 3.55rem;
+}
+
+.good-list li .pic img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.good-list li .title{
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+	font-size: 0.3rem;
+	color: #333333;
+	width: 100%;
+	line-height: 0.6rem;
+	height: 0.6rem;
+	text-align: center;
+	position: relative;
+	margin-top: 0.1rem;
+}
+
+.good-list li .title .name{
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+	font-size: 0.3rem;
+	color: #333333;
+	width: 2rem;
+	line-height: 0.6rem;
+	height: 0.6rem;
+	text-align: left;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+.good-list li .title .no{
+	line-height: 0.6rem;
+	height: 0.6rem;
+	font-size: 0.2rem;
+	color: #cccccc;
+}
+
+.good-list li .title .price{
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+	font-size: 0.3rem;
+	width: 1rem;
+	line-height: 0.6rem;
+	height: 0.6rem;
+	text-align: right;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.good-list li .content{
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+	font-size: 0.24rem;
+	color: #666666;
+	line-height: 0.5rem;
+	height: 0.5rem;
+	width: 100%;
+}
+
+
+/** detail */
+.good-detail{
+	width: 100%;
+}
+
+.good-detail .pic{width: 100%;font-size: 0;}
+.good-detail .pic img{width: 100%;height: auto;}
+
+.good-detail .title{
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+	font-size: 0.3rem;
+	color: #333333;
+	width: 100%;
+	line-height: 0.6rem;
+	height: 0.6rem;
+	text-align: left;
+	position: relative;
+	margin-top: 0.1rem;
+	padding: 0 1.8rem 0 0.2rem;
+}
+
+.good-detail .title .name{
+	font-weight: 600;
+}
+
+.good-detail .title .price{
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+	font-size: 0.28rem;
+	width: 1.5rem;
+	line-height: 0.6rem;
+	height: 0.6rem;
+	text-align: right;
+	position: absolute;
+	right: 0.2rem;
+	top: 0;
+}
+
+
+.good-detail .no{
+	line-height: 0.4rem;
+	height: 0.4rem;
+	font-size: 0.2rem;
+	color: #cccccc;
+	padding: 0 0.2rem;
+}
+
+
+
+.good-detail .desc{width: 100%;padding: 0.2rem;text-align: justify;line-height: 2;font-size: 0.28rem;}
