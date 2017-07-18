@@ -2,7 +2,7 @@
 <html>
 <head>
 	<%- include ../common/meta.ejs %>
-	<title>导游预定</title>
+	<title>景区导游</title>
 	<link rel="stylesheet" type="text/css" href="css/guide.css">
 </head>
 <body>
@@ -19,7 +19,7 @@
 				<div class="name">${obj.name}</div>
 				<div class="line" {@if obj.kind > 2}style="opacity:0;"{@/if}>
 					<span class="tel">编号：${obj.no}</span>
-					<span class="price">价格：<em class="red-hlight">￥${obj.price}/时</em></span>
+					<span class="price">收费标准：<em class="red-hlight">￥${obj.price}/时</em></span>
 				</di
 				<div class="line">
 					<span class="address">电话：${obj.phone}</span>
