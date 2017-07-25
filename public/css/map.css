@@ -1,3 +1,7 @@
+@font-face{
+	font-family: icomoon;
+	src : url("../tff/icomoon.woff");
+}
 .container{
 	width: 100%;
 	height: 100%;
@@ -7,9 +11,21 @@
 	width: 100%;
 	height: 100%;
 	position: relative;
+	overflow: auto;
+	overflow: hidden;
 }
 
-.map-panel img{
+
+.map-panel .map-box{
+	width: 100%;
+	height: 7.72rem;
+	position: absolute;
+	top: 50%;
+	margin-top: -3.86rem;
+	left: 0;
+}
+
+.map-panel .map-box img{
 	width: 100%;
 	height: auto;
 }
@@ -43,3 +59,46 @@
 	/*background-color: #cccccc;
 	border-radius: 0.5rem;*/
 }
+
+.msg-box{
+	position: absolute;
+	width: 100%;
+	height: auto;
+	color: #ffffff;
+	left: 0;
+	top: 0;
+}
+
+.ico-wrapper{
+	position: absolute;
+	width: 1.66rem;
+	height: 0.7rem;
+	right: 0.2rem;
+	top: 0.2rem;
+	z-index: 99;
+	padding: 0 0.1rem;
+	font-family: icomoon;
+	background-color: #ffffff;
+	border-radius: 0.35rem;
+	border: 0.02rem solid #ccc;
+}
+
+.ico{
+	line-height: 0.7rem;
+	height: 0.7rem;
+	width: 0.7rem;
+	font-size: 0.36rem;
+    color: #000;
+    display: inline-block;
+    text-align: center;
+}
+
+.ico.disabled{
+	color: #666;
+}
+
+.ico:first-child{border-right: 0.02rem solid #ccc;float: left;}
+.ico:last-child{float: right;}
+
+.ico.zoom-in:before	{content: "\e987";}
+.ico.zoom-out:before	{content: "\e988";}

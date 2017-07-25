@@ -28,7 +28,12 @@ var mapList = [
 
 (function(P){
 	var _this = null;
+  var maxScale = 3;
+  var startScale,currentScale,dx,dy;
 	_this = P.map = {
+    data : {
+      currentScale : 1
+    },
     tpl : {},
 		init : function(){
 			_this.tpl.posTpl = juicer($('#pos-tpl').html());
@@ -37,7 +42,7 @@ var mapList = [
 		},
 		initEvent : function(){
       $('#wrapper').on('touchstart', function(e){
-        // //e.preventDefault();
+        // e.preventDefault();
       });
 
       $('#wrapper').on('tap', '.pos', function(e){
@@ -45,10 +50,234 @@ var mapList = [
         var sid = $this.attr('data-sid');
         window.location.href = 'spot/detail/' + sid;
       });
+
+      $('#wrapper').on('tap', '.zoom-in', function(e){
+        var $this = $(this);
+        if($this.hasClass('disabled')){
+          return;
+        }
+        _this.zoom(2);
+        $this.addClass('disabled');
+        $('.zoom-out').removeClass('disabled');
+      });
+
+      $('#wrapper').on('tap', '.zoom-out', function(e){
+        var $this = $(this);
+        if($this.hasClass('disabled')){
+          return;
+        }
+        _this.zoom(1);
+        $this.addClass('disabled');
+        $('.zoom-in').removeClass('disabled');
+      });
+
+      var target = document.getElementById("map_box");
+      touch.on(target, 'touchstart', function(ev){
+        ev.preventDefault();
+      });
+
+      
+      _this.data.VoH = -1;//init
+      touch.on(target, 'drag', function(ev){
+        if(_this.data.currentScale == 1){
+          return;
+        }
+        var $box = $(this);
+        if(this.localName == 'img'){
+          $box = $(this).parent('div');
+        }
+        $box.css('-webkit-transition', '');
+        var dx = parseInt($box.data('dx'));
+        var dy = parseInt($box.data('dy'));
+        
+        var max_x = parseInt($box.data('max_x'));
+        var max_y = parseInt($box.data('max_y'));
+        var min_x = parseInt($box.data('min_x'));
+        var min_y = parseInt($box.data('min_y'));
+        dx = dx || 0;
+        dy = dy || 0;
+        var offx = dx + ev.x;// * initialScale;
+        var offy = dy + ev.y;// * initialScale;
+
+        if(_this.data.currentScale == 1){
+          if(_this.data.VoH == -1){
+            _this.data.VoH = 0;
+            var absX = Math.abs(ev.x);
+            var absY = Math.abs(ev.y);
+            if(absY > absX){
+              _this.data.VoH = 1;
+            }
+          }
+
+          if(_this.data.VoH == 0){
+            offy = dy;
+          }else{
+            offx = dx;
+          }
+        }
+
+        
+        
+        
+
+        var blacksize = parseInt($box.width() / 8);
+        var left = min_x - blacksize;
+        var top = max_y + blacksize;
+        var right = max_x + blacksize;
+        var bottom = min_y - blacksize; 
+
+        var prev_trigger = left - 50;
+        var next_trigger = right + 50;
+
+        if(_this.data.currentScale == 1 && _this.data.VoH == 1){
+          top = max_y - blacksize * 2;
+          bottom = min_y + blacksize * 2;
+          var top_trigger = top + 30;
+          var bottom_trigger = bottom - 30;
+          
+          var offset = 0;
+          if(offy < top_trigger){
+            offset = top_trigger - offy;
+          }else{
+            offset = offy - bottom_trigger;
+          }
+          offset = Math.abs(offy);
+          
+          var opacity = (200/(offset + 200)).toFixed(1);
+          if (offy < top_trigger || offy > bottom_trigger) {
+            _this.data.triggerClose = true;
+          }else{
+            _this.data.triggerClose = false;
+          }
+        }
+        if (offx < prev_trigger || offx > next_trigger) {
+          var change = false;
+          if (change) {
+            _this.changing = true;
+
+            _this.swapCallback(_this.data.currIndex);
+
+            $('#img_panel').find('li').each(function(index){
+              var $li = $(this);
+              $li.css('-webkit-transform', 'translateX('+ (index - _this.data.currIndex)* 100 + '%' +')');
+              
+            });
+            $('#img_index').html(parseInt(_this.data.currIndex) + 1);
+            return; 
+          }
+        }
+        offx = offx > right ? right : offx;
+        offy = offy > top ? top : offy;
+        offx = offx < left ? left : offx;
+        offy = offy < bottom ? bottom : offy;
+        dx = offx;
+        dy = offy;
+        $box.css('-webkit-transform', 'translate(' + offx + 'px,' + offy + 'px) scale('+_this.data.currentScale+')');
+      });
+
+      touch.on(target, 'dragend', function(ev){
+        if(_this.data.currentScale == 1){
+          return;
+        }
+        var $box = $(this);
+        if(this.localName == 'img'){
+          $box = $(this).parent('div');
+        }
+        $box.css('-webkit-transition', '-webkit-transform 0.3s');
+        var dx = parseInt($box.data('dx'));
+        var dy = parseInt($box.data('dy'));
+        dx = dx || 0;
+        dy = dy || 0;
+        var max_x = parseInt($box.data('max_x'));
+        var max_y = parseInt($box.data('max_y'));
+        var min_x = parseInt($box.data('min_x'));
+        var min_y = parseInt($box.data('min_y'));
+        
+        var offx = dx + ev.x;// * initialScale;
+        var offy = dy + ev.y;// * initialScale;
+        offx = offx > max_x ? max_x : offx;
+        offy = offy > max_y ? max_y : offy;
+        offx = offx < min_x ? min_x : offx;
+        offy = offy < min_y ? min_y : offy;
+
+        dx = offx;
+        dy = offy;
+        $box.css('-webkit-transform', 'translate(' + dx + 'px,' + dy + 'px) scale('+_this.data.currentScale+')');
+        _this.saveZoomInfo($box, dx, dy);
+      });
 		},
+    zoom : function(scale){
+      var $box = $('.map-box');
+      $box.css('-webkit-transition', '');
+      $box.css('-moz-transition', '');
+      $box.css('-webkit-transition-timing-function','cubic-bezier(0.1, 0.57, 0.1, 1)');
+      var dx = parseInt($box.data('dx')) || 0;
+      var dy = parseInt($box.data('dy')) || 0;
+
+      _this.data.currentScale = scale;
+      _this.saveZoomInfo($box, dx, dy);
+
+      var offx = dx - $box.width() / 2;
+      var offy = dy - $box.height() /2;
+
+      var max_x = parseInt($box.data('max_x'));
+      var max_y = parseInt($box.data('max_y'));
+      var min_x = parseInt($box.data('min_x'));
+      var min_y = parseInt($box.data('min_y'));
+      
+      offx = offx > max_x ? max_x : offx;
+      offy = offy > max_y ? max_y : offy;
+      offx = offx < min_x ? min_x : offx;
+      offy = offy < min_y ? min_y : offy;
+      dx = offx;
+      dy = offy;
+      
+      _this.saveZoomInfo($box, dx, dy);        
+      $box.css('-webkit-transform-origin', '0 0');
+      $box.css('-webkit-transform', 'translate('+dx + 'px,' + dy + 'px'+') scale('+ _this.data.currentScale +')');
+    },
+    saveZoomInfo : function($box, sdx, sdy){
+      var $imgPanel = $('#map_panel');
+      var imgWidth = parseInt($imgPanel.width());
+      var imgHeight = parseInt($imgPanel.height());
+      var imgPanelWidth = $imgPanel.width();
+      var imgPanelHeight = $imgPanel.height();
+      var scaledImgWidth = imgWidth * _this.data.currentScale;
+      var scaledImgHeight = imgHeight * _this.data.currentScale;
+      var scaledImgPanelWidth = imgPanelWidth * _this.data.currentScale;
+      var scaledImgPanelHeight = imgPanelHeight * _this.data.currentScale;
+
+      var min_x,min_y,max_x,max_y,dx,dy;
+      dx = sdx;
+      dy = sdy;
+
+      if(_this.data.currentScale == 1){
+        min_x = 0;
+        // min_y = 0 - imgHeight + imgPanelHeight;
+        // if(imgHeight <  imgPanelHeight){
+        //   min_y = 0;
+        // }
+        min_y = 0;
+        max_x = 0;
+        max_y = 0;
+      }else{
+        min_x = 0 - imgPanelWidth;
+        min_y = 0 - imgPanelHeight;// - scaledImgHeight) / 2;
+        max_x = 0;
+        max_y = 0;
+      }
+
+      $box.data('scroll', -1);
+      $box.data('dx', dx);
+      $box.data('dy', dy);
+      $box.data('min_x', min_x);
+      $box.data('max_x', max_x);
+      $box.data('min_y', min_y);
+      $box.data('max_y', max_y);
+    },
     loadPos : function(){
       var html = _this.tpl.posTpl.render({list: mapList});
-      $('#map_panel').append(html);
+      $('#map_box').append(html);
     }
   }
 }(moka));
